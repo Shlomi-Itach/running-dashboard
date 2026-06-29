@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
+<title>חצי מרתון חיפה — מעקב אימונים 🏃</title>
+<script src="chart.min.js" onerror="window.__noChart=true"></script>
+<script src="strava-data.js" onerror="window.__noData=true"></script>
+<style>
+  :root{
+    --bg:#0f1419; --card:#1a212b; --card2:#222c38; --line:#2c3845;
+    --txt:#e8edf2; --muted:#8b9bab; --accent:#fc5200; --accent2:#36c5f0;
+    --good:#37d67a; --warn:#ffc14d; --bad:#ff5a5a;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Segoe UI",Arial,sans-serif;background:var(--bg);color:var(--txt);line-height:1.5}
+  header{padding:22px 20px 6px;display:flex;flex-wrap:wrap;align-items:center;gap:12px;justify-content:space-between}
+  h1{font-size:23px;margin:0}
+  .sub{color:var(--muted);font-size:13px}
+  .wrap{max-width:1120px;margin:0 auto;padding:12px 20px 70px}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:10px 0 14px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px}
+  .card .label{color:var(--muted);font-size:13px;margin-bottom:6px}
+  .card .value{font-size:25px;font-weight:700}
+  .card .value small{font-size:14px;color:var(--muted);font-weight:400}
+  .filterbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:18px}
+  .filterbar label{font-size:14px;color:var(--muted)}
+  select{background:var(--card2);border:1px solid var(--line);color:var(--txt);border-radius:10px;padding:9px 14px;font-size:14px;cursor:pointer}
+  select:hover{border-color:var(--accent2)}
+  .sec-title{font-size:15px;font-weight:700;margin:20px 0 2px}
+  .sec-title .hint{font-weight:400;font-size:12px;color:var(--muted)}
+  .cmp{font-size:11.5px;margin-top:7px;font-weight:600}
+  .cmp.up{color:var(--good)}
+  .cmp.down{color:var(--bad)}
+  .cmp.flat{color:var(--muted)}
+  .hero{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin:8px 0 18px}
+  .hcard{background:linear-gradient(135deg,#1d2632,#161d27);border:1px solid var(--line);border-radius:16px;padding:18px}
+  .hcard .t{color:var(--muted);font-size:13px;margin-bottom:8px}
+  .hcard .big{font-size:30px;font-weight:800;line-height:1.1}
+  .hcard .m{font-size:13px;color:var(--muted);margin-top:8px}
+  .hcard.accent{border-color:var(--accent)}
+  .focus{border-color:var(--accent2);background:linear-gradient(135deg,#172430,#161d27)}
+  .focus-grid{display:grid;grid-template-columns:1.35fr 1fr;gap:16px}
+  @media(max-width:700px){.focus-grid{grid-template-columns:1fr}}
+  .fn-label{color:var(--muted);font-size:13px}
+  .fn-title{font-size:21px;font-weight:800;margin:4px 0 6px}
+  .fn-detail{font-size:13px;color:var(--accent2);margin-bottom:6px}
+  .focus-next ul{list-style:none;padding:0;margin:6px 0 0}
+  .focus-next li{display:flex;gap:8px;padding:8px 0;font-size:13px;border-top:1px solid var(--line);line-height:1.6}
+  .focus-week{background:var(--card2);border-radius:12px;padding:12px;align-self:start}
+  .fw-row{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:8px 0;font-size:13px;border-bottom:1px solid var(--line)}
+  .fw-row:last-child{border:0}
+  .fw-row.next{color:var(--accent2);font-weight:700}
+  .focus-emph{margin-top:14px;background:rgba(252,82,0,.08);border:1px solid rgba(252,82,0,.3);border-radius:10px;padding:12px;font-size:13px;line-height:1.6}
+  .fp-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
+  @media(max-width:700px){.fp-grid{grid-template-columns:1fr}}
+  .fp-box{background:var(--card2);border:1px solid var(--line);border-radius:12px;padding:14px}
+  .fp-box.warn{background:rgba(255,90,90,.07);border-color:rgba(255,90,90,.35)}
+  .fp-box .fp-title{font-weight:700;font-size:14px;margin-bottom:6px}
+  .fp-box ul{margin:0}
+  .fp-box .warn-list{padding-inline-start:20px}
+  .fp-box .warn-list li{margin:5px 0;font-size:13px}
+  .grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:16px}
+  .panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin-top:16px}
+  .panel h3{margin:0 0 12px;font-size:16px;font-weight:700}
+  .panel h3 .hint{font-weight:400;font-size:12px;color:var(--muted)}
+  canvas{width:100%!important;max-height:280px}
+  .chart-full canvas{max-height:380px}
+  .nochart{color:var(--muted);font-size:13px;text-align:center;padding:30px 10px}
+  table{width:100%;border-collapse:collapse;font-size:13px}
+  th,td{padding:8px 10px;text-align:right;border-bottom:1px solid var(--line)}
+  th{color:var(--muted);font-weight:600}
+  .tablewrap{max-height:420px;overflow:auto;border-radius:10px}
+  .tablewrap thead th{position:sticky;top:0;background:var(--card);z-index:1}
+  tr:hover td{background:var(--card2)}
+  .dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-left:5px;vertical-align:middle}
+  .zbadge{font-size:12px;padding:1px 7px;border-radius:20px;font-weight:600;color:#0f1419}
+  .wt-select{font-size:12px;padding:5px 8px;border-radius:8px;max-width:130px}
+  .btn-an{background:transparent;border:1px solid var(--accent);color:var(--accent);border-radius:8px;padding:5px 11px;font-size:12px;cursor:pointer;font-weight:600;white-space:nowrap}
+  .btn-an:hover{background:var(--accent);color:#fff}
+  .analysis-row td{background:#10161e;padding:0}
+  .analysis-box{padding:16px 18px;border-right:3px solid var(--accent)}
+  .analysis-box h4{margin:0 0 8px;font-size:15px}
+  .an-metrics{font-size:12px;color:var(--muted);margin-bottom:12px;line-height:1.9}
+  .an-list{list-style:none;padding:0;margin:0}
+  .an-list li{padding:5px 0;font-size:13px;display:flex;gap:8px;align-items:flex-start}
+  .an-list li .ic{flex:0 0 auto}
+  .an-tip{margin-top:12px;font-size:13px;color:var(--accent2);background:rgba(54,197,240,.08);padding:10px 12px;border-radius:8px}
+  .sform{display:flex;flex-wrap:wrap;gap:14px;align-items:flex-end;margin-bottom:14px}
+  .sform .fld{display:flex;flex-direction:column;gap:5px;font-size:13px;color:var(--muted)}
+  .sform input[type=date],.sform input[type=text]{background:var(--bg);border:1px solid var(--line);color:var(--txt);border-radius:8px;padding:8px;font-size:14px}
+  .muscles{display:flex;flex-wrap:wrap;gap:8px}
+  .muscle{display:flex;align-items:center;gap:6px;background:var(--card2);border:1px solid var(--line);border-radius:8px;padding:7px 11px;font-size:13px;cursor:pointer;color:var(--txt);user-select:none}
+  .muscle:has(input:checked){border-color:var(--accent);background:rgba(252,82,0,.12)}
+  .muscle input{accent-color:var(--accent);cursor:pointer;margin:0}
+  .muscles-row{display:flex;flex-wrap:wrap;gap:6px;min-width:340px}
+  .muscle.sm{padding:4px 8px;font-size:12px}
+  .mbadge{display:inline-block;font-size:12px;padding:2px 9px;border-radius:20px;background:var(--card2);border:1px solid var(--line);margin:2px}
+  .mbadge.legs{background:rgba(252,82,0,.2);border-color:var(--accent);color:var(--accent);font-weight:600}
+  .del-btn{background:transparent;border:1px solid var(--bad);color:var(--bad);border-radius:8px;padding:4px 11px;font-size:12px;cursor:pointer}
+  .del-btn:hover{background:var(--bad);color:#fff}
+  .insights{list-style:none;padding:0;margin:0}
+  .insights li{padding:10px 0;border-bottom:1px solid var(--line);display:flex;gap:10px}
+  .insights li:last-child{border:0}
+  .insights .n{flex:0 0 26px;height:26px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px}
+  .warn-box{background:rgba(255,90,90,.08);border:1px solid rgba(255,90,90,.35);border-radius:12px;padding:14px}
+  .warn-box ul{margin:8px 0 0;padding-inline-start:20px}
+  .warn-box li{margin:4px 0;font-size:13px}
+  .callout{border-radius:12px;padding:14px;font-size:14px;margin-top:12px}
+  .callout.bad{background:rgba(255,90,90,.1);border:1px solid rgba(255,90,90,.4)}
+  .callout.good{background:rgba(55,214,122,.1);border:1px solid rgba(55,214,122,.4)}
+  .ztable td:first-child{font-weight:700}
+  .timeline{display:flex;gap:8px;flex-wrap:wrap}
+  .phase{flex:1;min-width:120px;background:var(--card2);border:1px solid var(--line);border-radius:12px;padding:12px}
+  .phase.cur{border-color:var(--accent);background:rgba(252,82,0,.1)}
+  .phase .pn{font-weight:700;font-size:14px}
+  .phase .pw{font-size:12px;color:var(--muted)}
+  .phase .pf{font-size:12px;margin-top:6px}
+  .pva{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px}
+  .day{background:var(--card2);border:1px solid var(--line);border-radius:12px;padding:12px}
+  .day .dh{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+  .day .dn{font-weight:700}
+  .day .desc{font-size:12px;color:var(--muted)}
+  .status{font-size:18px}
+  .empty{text-align:center;padding:60px 20px;color:var(--muted);line-height:1.8}
+  .empty code{background:var(--card2);padding:2px 8px;border-radius:6px;color:var(--accent2)}
+  details summary{cursor:pointer;font-weight:600;color:var(--accent2);margin-top:6px}
+  details table{margin-top:10px}
+  @media(max-width:600px){.card .value{font-size:21px}.hcard .big{font-size:25px}}
+</style>
+</head>
+<body>
+<header>
+  <div>
+    <h1>🏃 חצי מרתון חיפה — מעקב אימונים</h1>
+    <div class="sub" id="syncInfo"></div>
+  </div>
+  <div style="display:flex;align-items:center;gap:12px">
+    <span class="sub" id="rangePill"></span>
+    <button id="refreshBtn" onclick="doRefresh()">🔄 רענן</button>
+  </div>
+</header>
+
+<div class="wrap">
+  <div id="content" style="display:none">
+
+    <div class="hero" id="hero"></div>
+
+    <div id="focus"></div>
+
+    <!-- בורר תקופה -->
+    <div class="filterbar">
+      <label for="periodSelect">הצג נתוני סיכום עבור:</label>
+      <select id="periodSelect">
+        <option value="7">שבוע אחרון</option>
+        <option value="30">חודש אחרון</option>
+        <option value="90">3 חודשים אחרונים</option>
+        <option value="180">חצי שנה אחרונה</option>
+        <option value="365">שנה אחרונה</option>
+        <option value="730">שנתיים אחרונות</option>
+        <option value="0">כל הזמן</option>
+      </select>
+    </div>
+    <h4 class="sec-title">🏃 סיכום אירובי <span class="hint">(ריצות + אליפטי)</span></h4>
+    <div class="cards" id="cardsAero"></div>
+    <h4 class="sec-title">🏋️ סיכום כוח <span class="hint">(מספר אימונים לכל אזור, לפי הסימון בטבלת הכוח)</span></h4>
+    <div class="cards" id="cardsStrength"></div>
+
+    <div class="panel">
+      <h3>❤️ ניתוח זוני דופק <span class="hint">— לפי הזונים המתוקנים שלך (לא של אפל)</span></h3>
+      <div class="grid2">
+        <div>
+          <table class="ztable" id="ztable"></table>
+          <div id="zoneCallout"></div>
+        </div>
+        <div><canvas id="zoneChart"></canvas><div class="sub" style="text-align:center;margin-top:6px">פילוח זמן אימון לפי זון (6 שבועות אחרונים, לפי דופק ממוצע)</div></div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h3 id="weekTitle">📅 השבוע — תוכנית מול ביצוע</h3>
+      <div class="pva" id="weekPlan"></div>
+      <div class="sub" style="margin-top:10px">אימון רגליים לא מופיע ב-Strava (אימון כוח) — סמן לעצמך. ריצות מסונכרנות אוטומטית.</div>
+    </div>
+
+    <div class="panel">
+      <h3>🗺️ מסגרת-העל — 21 שבועות</h3>
+      <div class="timeline" id="timeline"></div>
+      <details><summary>הצג פירוט שלב בסיס 1 (שבועות 1–4)</summary>
+        <div class="tablewrap"><table id="base1"></table></div>
+      </details>
+    </div>
+
+    <div class="panel" id="tblpanel">
+      <h3>📋 כל האימונים</h3>
+      <div class="tablewrap">
+        <table id="runsTable">
+          <thead><tr><th>תאריך</th><th>שם</th><th>מרחק</th><th>זמן</th><th>קצב</th><th>דופק</th><th>זון</th><th>עלייה</th><th>סוג אימון</th><th>ניתוח</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="panel" id="strengthpanel">
+      <h3>🏋️ אימוני כוח <span class="hint">— מסונכרן מ-Strava. סמן בכל אימון אילו אזורי גוף אומנו (סימון "רגליים" מסמן את אימון הרגליים בתוכנית כבוצע).</span></h3>
+      <div class="tablewrap">
+        <table id="strengthTable">
+          <thead><tr><th>תאריך</th><th>שם</th><th>זמן</th><th>דופק</th><th>אזורים שאומנו (סמן)</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h3>📌 עקרונות ודגשים</h3>
+      <div class="fp-grid">
+        <div class="fp-box"><div class="fp-title">🎯 שלוש המסקנות שמשנות את האימון</div><ul class="insights" id="insights"></ul></div>
+        <div class="fp-box warn"><div class="fp-title">🚩 שמירה על הדורבן (plantar fasciitis)</div><ul class="warn-list" id="injury"></ul></div>
+      </div>
+    </div>
+
+    <!-- גרפים: רוחב מלא, מוערמים אחד מתחת לשני, מתחת לטבלה -->
+    <div class="panel chart-full"><h3>📉 מגמת קצב <span class="hint">— נמוך = מהיר. הפס הירוק = יעד 6:00–6:30</span></h3><div id="paceWrap"><canvas id="paceChart"></canvas></div></div>
+    <div class="panel chart-full"><h3>📊 נפח שבועי (ק"מ)</h3><div id="weeklyWrap"><canvas id="weeklyChart"></canvas></div></div>
+    <div class="panel chart-full"><h3>📏 מרחק לכל ריצה (ק"מ)</h3><div id="distWrap"><canvas id="distChart"></canvas></div></div>
+    <div class="panel chart-full"><h3>❤️ דופק ממוצע לעומת קצב</h3><div id="hrWrap"><canvas id="hrChart"></canvas></div></div>
+  </div>
+
+  <div id="empty" class="empty" style="display:none">
+    <h2>אין עדיין נתונים 🗂️</h2>
+    <p>הרץ את <code>sync-strava.ps1</code> כדי לשאוב את האימונים מ-Strava, ואז רענן.</p>
+  </div>
+</div>
+
+<script>
+"use strict";
+// ===================== תוכנית האימון =====================
+const PLAN={
+  raceName:'חצי מרתון חיפה',raceDate:'2026-11-20',startDate:'2026-06-29',goalTime:'02:10',
+  goalPaceLo:360,goalPaceHi:390,hrMax:190,hrRest:55,
+  zones:[
+    {z:1,name:'זון 1',lo:122,hi:136,use:'חימום / שחרור',c:'#6ec6ff'},
+    {z:2,name:'זון 2',lo:136,hi:150,use:'ריצות קלות + ארוכות',c:'#37d67a'},
+    {z:3,name:'זון 3',lo:150,hi:163,use:'טמפו',c:'#ffc14d'},
+    {z:4,name:'זון 4',lo:163,hi:177,use:'אינטרוולים',c:'#ff8a3d'},
+    {z:5,name:'זון 5',lo:177,hi:190,use:'ספרינטים',c:'#ff5a5a'},
+  ],
+  phases:[
+    {name:'בסיס 1',w:'1–4',f:'זון 2, תיקון cadence',from:1,to:4},
+    {name:'בסיס 2',w:'5–9',f:'בניית נפח, טמפו',from:5,to:9},
+    {name:'בנייה',w:'10–15',f:'אינטרוולים, ארוכה 16–18 ק"מ',from:10,to:15},
+    {name:'שיא',w:'16–19',f:'קצב מרוץ, חידוד',from:16,to:19},
+    {name:'טייפר',w:'20–21',f:'הפחתה למרוץ',from:20,to:21},
+  ],
+  week:[
+    {dow:1,day:'שני',name:'רגליים (כוח)',where:'חדר כושר',type:'strength'},
+    {dow:3,day:'רביעי',name:'אינטרוולים / איכות',where:'הליכון',type:'intervals'},
+    {dow:4,day:'חמישי',name:'אירובי קל זון 2',where:'חוץ / אליפטי',type:'easy'},
+    {dow:6,day:'שבת',name:'ריצה ארוכה',where:'חוץ',type:'long'},
+  ],
+  base1:[
+    {week:1,mon:'רגליים: סקוואט 3×8, מתות רומניות 3×8, לאנג׳ים 3×10, עליות עקב 3×15, גשר ירכיים 3×12',wed:'חימום 10 דק׳, 6×(1 דק׳ זון 4 + 2 דק׳ קל), cadence 165+',thu:'40 דק׳ זון 2 (<150)',sat:'ריצה ארוכה 7–8 ק"מ זון 2'},
+    {week:2,mon:'רגליים (העלאת משקל קלה)',wed:'7×(1 דק׳ זון 4 + 2 דק׳ קל), cadence 165+',thu:'45 דק׳ זון 2',sat:'8–9 ק"מ זון 2'},
+    {week:3,mon:'רגליים',wed:'6×(2 דק׳ זון 4 + 2 דק׳ קל)',thu:'45 דק׳ זון 2',sat:'9–10 ק"מ זון 2'},
+    {week:4,mon:'רגליים קל (התאוששות)',wed:'5×(1 דק׳ זון 4 + 2 דק׳ קל)',thu:'35 דק׳ זון 2',sat:'7 ק"מ זון 2 רגוע'},
+  ],
+  insights:[
+    '<b>תאט את הריצות הקלות והארוכות.</b> זון 2 (136–150 דופק) — גם אם זה 8:30/ק"מ או הליכה משולבת. זה בונה את הבסיס האירובי.',
+    '<b>העלה cadence ל-165–170.</b> צעדים קטנים ומהירים יותר — יעיל יותר ומוריד עומס מכף הרגל (הדורבן).',
+    '<b>התעלם מהזונים של אפל.</b> הם מבוססים על דופק מקס שגוי. השתמש בטבלה כאן (זון 2 = 136–150).',
+  ],
+  injury:[
+    'העלאת נפח עד 10% בשבוע בלבד.',
+    'עליות עקב + מתיחות שוק אחרי כל ריצה.',
+    'גלגול בקבוק קפוא תחת כף הרגל בערב (מניעתי).',
+    '<b>דגל אדום:</b> כאב חד בעקב בצעדים הראשונים בבוקר → להאט ולהתייעץ. לא להתעלם.',
+  ],
+};
+
+// ===================== עזרים =====================
+const $=id=>document.getElementById(id);
+const fmtPace=s=>{if(!isFinite(s)||s<=0)return'—';const m=Math.floor(s/60),x=Math.round(s%60);return m+':'+String(x).padStart(2,'0');};
+const fmtDur=s=>{s=Math.round(s);const h=Math.floor(s/3600),m=Math.floor(s%3600/60),x=s%60;return h?h+':'+String(m).padStart(2,'0')+':'+String(x).padStart(2,'0'):m+':'+String(x).padStart(2,'0');};
+const isoWeek=d=>{const t=new Date(Date.UTC(d.getFullYear(),d.getMonth(),d.getDate()));const day=t.getUTCDay()||7;t.setUTCDate(t.getUTCDate()+4-day);const ys=new Date(Date.UTC(t.getUTCFullYear(),0,1));const w=Math.ceil(((t-ys)/86400000+1)/7);return t.getUTCFullYear()+'-W'+String(w).padStart(2,'0');};
+const zoneOf=hr=>{if(!hr)return null;for(const z of PLAN.zones)if(hr>=z.lo&&hr<z.hi)return z;if(hr>=PLAN.zones[4].lo)return PLAN.zones[4];if(hr<PLAN.zones[0].lo)return{z:0,name:'מתחת',c:'#8b9bab',use:''};return null;};
+const dayStart=d=>{const x=new Date(d);x.setHours(0,0,0,0);return x;};
+// Strava מחזיר start_date_local כזמן מקומי עם סיומת Z מטעה — נפענח לפי הרכיבים כדי לא להזיז אזור-זמן
+const parseLocal=s=>{const m=String(s).match(/(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):?(\d{2})?/);return m?new Date(+m[1],+m[2]-1,+m[3],+m[4],+m[5],+(m[6]||0)):new Date(s);};
+const fmtWhen=d=>'<div>'+d.toLocaleDateString('he-IL',{weekday:'long'})+' · '+d.toLocaleTimeString('he-IL',{hour:'2-digit',minute:'2-digit'})+'</div><div style="font-size:11px;color:var(--muted)">'+d.toLocaleDateString('he-IL')+'</div>';
+const isEll=r=>/elliptical/i.test(r.type||'');
+const isStrength=r=>/weighttraining|workout|crossfit|hiit/i.test(r.type||'');
+const hasChart=()=>typeof Chart!=='undefined';
+// יוצר גרף, ומשמיד גרף קודם על אותו canvas (כדי שרענון לא ייכשל)
+function mkChart(cv,cfg){if(!hasChart())return null;const ex=Chart.getChart(cv);if(ex)ex.destroy();return new Chart(cv,cfg);}
+function safe(name,fn){try{fn();}catch(e){console.error('[render:'+name+']',e);}}
+
+// ===================== טעינת נתונים (ניתן להרצה חוזרת ברענון) =====================
+let runs=[], strengthActs=[], runById={};
+let weekNum=1, planStart=new Date(PLAN.startDate);
+
+function loadData(){
+  const acts=(window.STRAVA_DATA||[]).map(r=>{
+    const dist=+r.distance||0,mt=+r.moving_time||0;
+    return Object.assign({},r,{d:parseLocal(r.date),km:dist/1000,
+      pace:(mt>0&&dist>0)?mt/(dist/1000):null,
+      hr:r.avg_hr?+r.avg_hr:null,elev:+r.elev_gain||0,mt});
+  }).filter(r=>r.mt>0).sort((a,b)=>a.d-b.d);
+  runs=acts.filter(r=>!isStrength(r)&&(r.km>0||isEll(r)));   // אירובי
+  strengthActs=acts.filter(isStrength);                      // אימוני כוח
+  runById={}; runs.forEach(r=>{runById[r.id]=r;});
+  $(runs.length?'content':'empty').style.display='block';
+  if(window.STRAVA_SYNCED_AT) $('syncInfo').textContent='עודכן: '+new Date(window.STRAVA_SYNCED_AT).toLocaleString('he-IL');
+}
+
+// כפתור "רענן": שולף מחדש את קובץ הנתונים (בגרסה המקוונת) ומצייר מחדש
+function doRefresh(){
+  const btn=$('refreshBtn');
+  if(btn){btn.disabled=true;btn.textContent='⏳ טוען...';}
+  fetch('strava-data.js?t='+Date.now(),{cache:'no-store'})
+    .then(r=>{if(!r.ok)throw 0;return r.text();})
+    .then(txt=>{ eval(txt); loadData(); if(runs.length) render(); })
+    .catch(()=>{ location.reload(); })
+    .finally(()=>{ if(btn){btn.disabled=false;btn.textContent='🔄 רענן';} });
+}
+
+function render(){
+  const first=runs[0].d,last=runs[runs.length-1].d;
+  $('rangePill').textContent=first.toLocaleDateString('he-IL')+' – '+last.toLocaleDateString('he-IL');
+  const now=new Date();
+  weekNum=Math.max(1,Math.min(21,Math.floor((dayStart(now)-dayStart(planStart))/(7*86400000))+1));
+
+  safe('hero',()=>renderHero(now));
+  safe('focus',()=>renderFocus(now));
+  safe('cards',()=>{
+    if(!$('periodSelect').dataset.init){ $('periodSelect').value='7'; $('periodSelect').dataset.init='1'; }
+    $('periodSelect').onchange=renderCards;       // ברירת מחדל "שבוע אחרון" נקבעת רק פעם אחת
+    renderCards();
+  });
+  safe('zones',()=>renderZones(last));
+  safe('week',renderWeekPlan);
+  safe('timeline',renderTimeline);
+  safe('charts',renderCharts);
+  safe('table',renderTable);
+  safe('strength',renderStrength);
+  safe('insights',renderInsights);
+}
+
+function renderInsights(){
+  $('insights').innerHTML=PLAN.insights.map((t,i)=>'<li><span class="n">'+(i+1)+'</span><span>'+t+'</span></li>').join('');
+  $('injury').innerHTML=PLAN.injury.map(t=>'<li>'+t+'</li>').join('');
+}
+
+function renderHero(now){
+  const race=new Date(PLAN.raceDate);
+  const daysToRace=Math.ceil((race-now)/86400000);
+  const phase=PLAN.phases.find(p=>weekNum>=p.from&&weekNum<=p.to)||PLAN.phases[0];
+  $('hero').innerHTML=
+    '<div class="hcard accent"><div class="t">המרוץ — '+PLAN.raceName+'</div><div class="big">'+daysToRace+' ימים</div><div class="m">'+race.toLocaleDateString('he-IL',{day:'numeric',month:'long',year:'numeric'})+'</div></div>'+
+    '<div class="hcard"><div class="t">שלב נוכחי</div><div class="big">שבוע '+weekNum+'</div><div class="m">'+phase.name+' · '+phase.f+'</div></div>'+
+    '<div class="hcard"><div class="t">יעד זמן</div><div class="big">'+PLAN.goalTime+'</div><div class="m">קצב 6:00–6:30 לק"מ · יעד שאיפה</div></div>';
+}
+
+// ----- נתוני "מבט קדימה": טיפים לפי סוג אימון + דגש לכל שלב -----
+const WORKOUT_TIPS={
+  strength:{icon:'💪',nutrition:'ארוחה עם חלבון + פחמימה כ-1.5–2 שעות לפני. אחרי האימון: חלבון לשיקום השריר.',tip:'דגש על טכניקה וטווח תנועה מלא — משקלים בינוניים, לא מקסימליים.',focus:'גב ניטרלי, ברכיים בקו האצבעות. עליות עקב איטיות ומבוקרות — חיזוק ישיר נגד הדורבן.'},
+  intervals:{icon:'⚡',nutrition:'פחמימה זמינה כשעה לפני (בננה/חטיף אנרגיה). הימנע משומן וסיבים כבדים.',tip:'חימום 10 דק׳ הליכה/ריצה קלה לפני הקטעים — חובה למניעת פציעה.',focus:'בקטעי העבודה: cadence 165+, צעדים קצרים ומהירים. קח התאוששות מלאה בין קטעים.'},
+  easy:{icon:'🟢',nutrition:'קל — אפשר על בטן ריקה בבוקר, או פחמימה קלה (פרי/טוסט).',tip:'המשימה הקשה היא לרסן את עצמך — אם אתה מתנשף, אתה רץ מהר מדי.',focus:'דופק מתחת ל-150 (זון 2). אם עולה — האט או שלב הליכה. cadence 165+.'},
+  long:{icon:'🏃',nutrition:'ארוחת פחמימות טובה 2–3 שעות לפני. מעל 75 דק׳ — קח מים/ג׳ל לדרך.',tip:'התחל איטי יותר מהמתוכנן — קל יותר להאיץ בסוף מאשר לקרוס.',focus:'זון 2 לכל אורך הדרך, שתייה כל ~20 דק׳. דריפט דופק קל בסוף הוא נורמלי.'},
+};
+const PHASE_EMPH={
+  'בסיס 1':'המטרה עכשיו: לבנות בסיס אירובי וטכניקה — לא מהירות. כל ריצה בזון 2, cadence עולה בהדרגה, וסבלנות. ההאטה תשתלם בענק בהמשך.',
+  'בסיס 2':'מתחילים להוסיף נפח ועבודת טמפו. שמור על העיקרון 80/20 — רוב הריצות עדיין קלות.',
+  'בנייה':'העבודה הספציפית — אינטרוולים ארוכים וריצות ארוכות עד 16–18 ק"מ. שים דגש על התאוששות בין אימונים קשים.',
+  'שיא':'ריצות בקצב מרוץ וחידוד. פחות נפח, יותר איכות — שמור על טריות לקראת המרוץ.',
+  'טייפר':'מפחיתים נפח לקראת המרוץ. תרגיש רענן (ואולי חסר מנוחה) — זה תקין. אל תוסיף אימונים!',
+};
+
+function renderFocus(now){
+  const todayDow=now.getDay();
+  const wkStart=dayStart(new Date(planStart));wkStart.setDate(wkStart.getDate()+(weekNum-1)*7);
+  const wkEnd=new Date(wkStart);wkEnd.setDate(wkEnd.getDate()+7);
+  const wkRuns=runs.filter(r=>r.d>=wkStart&&r.d<wkEnd);
+  const doneDows=new Set(wkRuns.map(r=>r.d.getDay()));
+
+  // האימון הבא הכי קרוב (אם של היום כבר בוצע — מדלג לבא)
+  const cand=PLAN.week.map(w=>({w,da:(w.dow-todayDow+7)%7}));
+  cand.forEach(c=>{
+    if(c.da===0&&c.w.type!=='strength'&&doneDows.has(c.w.dow))c.da=7;
+    if(c.da===0&&c.w.type==='strength'&&legsDoneInWeek(weekNum))c.da=7;
+  });
+  cand.sort((a,b)=>a.da-b.da);
+  const next=cand[0].w, daysAhead=cand[0].da;
+
+  const nd=dayStart(now);nd.setDate(nd.getDate()+daysAhead);
+  const nextWeekNum=Math.max(1,Math.min(21,Math.floor((nd-dayStart(planStart))/(7*86400000))+1));
+  const b1=PLAN.base1.find(b=>b.week===nextWeekNum);
+  const dmap={1:b1?b1.mon:'',3:b1?b1.wed:'',4:b1?b1.thu:'',6:b1?b1.sat:''};
+  const detail=dmap[next.dow]||'';
+  const t=WORKOUT_TIPS[next.type]||WORKOUT_TIPS.easy;
+  const whenStr=daysAhead===0?'היום':daysAhead===1?'מחר':'בעוד '+daysAhead+' ימים';
+  const dateStr=nd.toLocaleDateString('he-IL',{weekday:'long',day:'numeric',month:'long'});
+
+  const weekRows=PLAN.week.map(w=>{
+    let st;
+    if(w===next) st='📍 הבא';
+    else if(w.type!=='strength'&&doneDows.has(w.dow)) st='✅ בוצע';
+    else if(w.type==='strength') st=legsDoneInWeek(weekNum)?'✅ בוצע':'💪 כוח';
+    else st='⬜ מתוכנן';
+    return '<div class="fw-row'+(w===next?' next':'')+'"><span>'+w.day+' · '+w.name+'</span><span>'+st+'</span></div>';
+  }).join('');
+
+  const phase=PLAN.phases.find(p=>weekNum>=p.from&&weekNum<=p.to)||PLAN.phases[0];
+  const emph=PHASE_EMPH[phase.name]||phase.f;
+
+  $('focus').innerHTML=
+    '<div class="panel focus"><h3>🔭 מבט קדימה — הפוקוס שלך לטווח הקצר</h3>'+
+    '<div class="focus-grid">'+
+      '<div class="focus-next">'+
+        '<div class="fn-label">האימון הבא · '+whenStr+' ('+dateStr+')</div>'+
+        '<div class="fn-title">'+t.icon+' '+next.name+' <span style="font-size:13px;color:var(--muted);font-weight:400">· '+next.where+'</span></div>'+
+        (detail?'<div class="fn-detail">'+detail+'</div>':'')+
+        '<ul>'+
+          '<li>🍎 <span><b>תזונה לפני:</b> '+t.nutrition+'</span></li>'+
+          '<li>💡 <span><b>טיפ:</b> '+t.tip+'</span></li>'+
+          '<li>🎯 <span><b>פוקוס באימון:</b> '+t.focus+'</span></li>'+
+        '</ul>'+
+      '</div>'+
+      '<div class="focus-week"><div style="font-size:13px;color:var(--muted);margin-bottom:6px">שבוע '+weekNum+' במבט</div>'+weekRows+'</div>'+
+    '</div>'+
+    '<div class="focus-emph">⭐ <b>דגש שלב '+phase.name+':</b> '+emph+'</div>'+
+    '</div>';
+}
+
+function renderCards(){
+  const days=+$('periodSelect').value;
+  let inCur,inPrev;
+  if(days>0){
+    const cs=new Date();cs.setHours(0,0,0,0);cs.setDate(cs.getDate()-days);
+    const ps=new Date(cs);ps.setDate(ps.getDate()-days);
+    inCur=r=>r.d>=cs; inPrev=r=>r.d>=ps&&r.d<cs;
+  }else{ inCur=()=>true; inPrev=()=>false; }
+  const hasPrev=days>0;
+  renderAeroCards(runs.filter(inCur),runs.filter(inPrev),hasPrev);
+  renderStrengthCards(strengthActs.filter(inCur),strengthActs.filter(inPrev),hasPrev);
+}
+
+// השוואה לתקופה מקבילה קודמת
+function cmpHTML(cur,prev,hib,fmt){
+  if(prev===null||prev===undefined) return '';
+  const f=fmt||(v=>''+Math.round(v));
+  if(prev===0&&cur===0) return '<div class="cmp flat">▬ ללא שינוי · קודם 0</div>';
+  if(prev===0) return '<div class="cmp up">▲ חדש · קודם 0</div>';
+  if(cur===0) return '<div class="cmp '+(hib?'down':'flat')+'">▼ קודם '+f(prev)+'</div>';
+  const diff=cur-prev;
+  if(Math.abs(diff)<1e-9) return '<div class="cmp flat">▬ ללא שינוי · קודם '+f(prev)+'</div>';
+  const cls=(hib?diff>0:diff<0)?'up':'down';
+  const arrow=diff>0?'▲':'▼';
+  const pct=Math.round(Math.abs(diff)/prev*100);
+  return '<div class="cmp '+cls+'">'+arrow+' '+f(Math.abs(diff))+' ('+pct+'%) · קודם '+f(prev)+'</div>';
+}
+function card(icon,label,valStr,unit,cur,prev,hib,fmt){
+  return '<div class="card"><div class="label">'+icon+' '+label+'</div><div class="value">'+valStr+' <small>'+unit+'</small></div>'+cmpHTML(cur,prev,hib,fmt)+'</div>';
+}
+function emptyCard(msg){return '<div class="card"><div class="label">'+msg+'</div><div class="value">—</div></div>';}
+
+function aeroMetrics(set){
+  const dist=set.filter(r=>r.km>0),paced=set.filter(r=>r.pace),km=set.reduce((s,r)=>s+r.km,0);
+  return {count:set.length,km:km,time:set.reduce((s,r)=>s+r.mt,0),
+    avgPace:paced.length?paced.reduce((s,r)=>s+r.pace,0)/paced.length:0,
+    bestPace:paced.length?Math.min.apply(null,paced.map(r=>r.pace)):0,
+    longest:dist.length?Math.max.apply(null,dist.map(r=>r.km)):0,
+    avgKm:dist.length?km/dist.length:0};
+}
+function renderAeroCards(cur,prev,hasPrev){
+  const el=$('cardsAero');
+  if(!cur.length){el.innerHTML=emptyCard('אין אימוני אירובי בתקופה');return;}
+  const c=aeroMetrics(cur),p=hasPrev?aeroMetrics(prev):null,P=k=>p?p[k]:null;
+  const fkm=v=>v.toFixed(1)+' ק"מ',fdur=v=>fmtDur(v),fpace=v=>fmtPace(v);
+  el.innerHTML=[
+    card('🏃','אימונים',c.count,'',c.count,P('count'),true,null),
+    card('📏','מרחק',c.km.toFixed(0),'ק"מ',c.km,P('km'),true,fkm),
+    card('⏱️','זמן',fmtDur(c.time),'',c.time,P('time'),true,fdur),
+    card('⚡','קצב ממוצע',fmtPace(c.avgPace),'/ק"מ',c.avgPace,P('avgPace'),false,fpace),
+    card('🏆','הקצב הטוב',fmtPace(c.bestPace),'/ק"מ',c.bestPace,P('bestPace'),false,fpace),
+    card('🛣️','הריצה הארוכה',c.longest.toFixed(1),'ק"מ',c.longest,P('longest'),true,fkm),
+    card('📊','ממוצע לריצה',c.avgKm.toFixed(1),'ק"מ',c.avgKm,P('avgKm'),true,fkm),
+  ].join('');
+}
+function renderStrengthCards(cur,prev,hasPrev){
+  const el=$('cardsStrength');
+  if(!strengthActs.length){el.innerHTML=emptyCard('אין אימוני כוח (סנכרן מ-Strava)');return;}
+  const cnt=(set,key)=>set.filter(r=>getAreas(r.id).indexOf(key)>=0).length;
+  const cards=[card('🏋️','אימוני כוח',cur.length,'',cur.length,hasPrev?prev.length:null,true,null)];
+  MUSCLES.forEach(m=>{const cc=cnt(cur,m.k);cards.push(card(m.icon,m.label,cc,'',cc,hasPrev?cnt(prev,m.k):null,true,null));});
+  el.innerHTML=cards.join('');
+}
+
+function renderZones(last){
+  $('ztable').innerHTML='<thead><tr><th>זון</th><th>דופק</th><th>שימוש</th></tr></thead><tbody>'+
+    PLAN.zones.map(z=>'<tr><td><span class="dot" style="background:'+z.c+'"></span>'+z.name+'</td><td>'+z.lo+'–'+z.hi+'</td><td>'+z.use+'</td></tr>').join('')+'</tbody>';
+  const six=new Date(last);six.setDate(six.getDate()-42);
+  const recent=runs.filter(r=>r.d>six&&r.hr);
+  const zt=[0,0,0,0,0];
+  recent.forEach(r=>{const z=zoneOf(r.hr);if(z&&z.z>=1)zt[z.z-1]+=r.mt;});
+  if(hasChart()) mkChart($('zoneChart'),{type:'doughnut',data:{labels:PLAN.zones.map(z=>z.name),
+    datasets:[{data:zt.map(s=>+(s/60).toFixed(0)),backgroundColor:PLAN.zones.map(z=>z.c),borderColor:'#0f1419',borderWidth:2}]},
+    options:{plugins:{legend:{position:'bottom',labels:{color:'#8b9bab',boxWidth:12}},tooltip:{callbacks:{label:c=>c.label+': '+c.raw+' דק׳'}}}}});
+  else $('zoneChart').outerHTML='<div class="nochart">גרף לא זמין</div>';
+  const easyish=recent.filter(r=>r.km>=7&&r.hr), tooHard=easyish.filter(r=>r.hr>150);
+  const co=$('zoneCallout');
+  if(easyish.length){
+    co.className='callout '+(tooHard.length>easyish.length/2?'bad':'good');
+    co.innerHTML=tooHard.length
+      ? '⚠️ <b>'+tooHard.length+' מתוך '+easyish.length+'</b> הריצות הארוכות/קלות שלך ב-6 השבועות האחרונים נרצו <b>מעל זון 2</b> (דופק > 150). זו בדיוק הנקודה מהתוכנית — תאט!'
+      : '✅ יופי — רוב הריצות הארוכות/קלות שלך נשארו בזון 2. המשך כך.';
+  }
+}
+
+function renderWeekPlan(){
+  const wkStart=dayStart(new Date(planStart));wkStart.setDate(wkStart.getDate()+(weekNum-1)*7);
+  const wkEnd=new Date(wkStart);wkEnd.setDate(wkEnd.getDate()+7);
+  $('weekTitle').innerHTML='📅 שבוע '+weekNum+' — תוכנית מול ביצוע <span class="hint">('+wkStart.toLocaleDateString('he-IL')+'–'+new Date(wkEnd-1).toLocaleDateString('he-IL')+')</span>';
+  const wkRuns=runs.filter(r=>r.d>=wkStart&&r.d<wkEnd);
+  const b1=PLAN.base1.find(b=>b.week===weekNum)||{};
+  const detail={1:b1.mon||'',3:b1.wed||'',4:b1.thu||'',6:b1.sat||''};
+  $('weekPlan').innerHTML=PLAN.week.map(w=>{
+    let st='⬜',extra='';
+    if(w.type==='strength'){
+      if(legsDoneInWeek(weekNum)){st='✅';extra='<div class="desc" style="color:var(--good);margin-top:4px">בוצע (סומן אימון רגליים)</div>';}
+      else st='💪';
+    }
+    else{
+      const m=wkRuns.find(r=>r.d.getDay()===w.dow)||wkRuns.find(r=>Math.abs(r.d.getDay()-w.dow)<=1);
+      if(m){st='✅';const z=zoneOf(m.hr);const done=isEll(m)?'אליפטי · '+fmtDur(m.mt):m.km.toFixed(1)+' ק"מ · '+fmtPace(m.pace);extra='<div class="desc" style="color:var(--good);margin-top:4px">בוצע: '+done+' · דופק '+(m.hr?Math.round(m.hr):'—')+((z&&z.z)?' ('+z.name+')':'')+'</div>';}
+    }
+    return '<div class="day"><div class="dh"><span class="dn">'+w.day+'</span><span class="status">'+st+'</span></div><div class="desc">'+w.name+' · '+w.where+'</div>'+(detail[w.dow]?'<div class="desc" style="margin-top:4px;color:var(--accent2)">'+detail[w.dow]+'</div>':'')+extra+'</div>';
+  }).join('');
+}
+
+function renderTimeline(){
+  $('timeline').innerHTML=PLAN.phases.map(p=>'<div class="phase '+((weekNum>=p.from&&weekNum<=p.to)?'cur':'')+'"><div class="pn">'+p.name+'</div><div class="pw">שבועות '+p.w+'</div><div class="pf">'+p.f+'</div></div>').join('');
+  $('base1').innerHTML='<thead><tr><th>שבוע</th><th>שני (רגליים)</th><th>רביעי (אינטרוולים)</th><th>חמישי (קל)</th><th>שבת (ארוכה)</th></tr></thead><tbody>'+
+    PLAN.base1.map(b=>'<tr><td><b>'+b.week+'</b></td><td>'+b.mon+'</td><td>'+b.wed+'</td><td>'+b.thu+'</td><td>'+b.sat+'</td></tr>').join('')+'</tbody>';
+}
+
+function renderCharts(){
+  if(!hasChart()){['paceWrap','weeklyWrap','distWrap','hrWrap'].forEach(w=>{const e=$(w);if(e)e.innerHTML='<div class="nochart">⚠️ ספריית הגרפים לא נטענה (chart.min.js חסר או חסום). שאר הדשבורד תקין.</div>';});return;}
+  const gridC='#2c3845',tickC='#8b9bab';
+  const baseOpts=(yTitle,reverse)=>({responsive:true,plugins:{legend:{display:false}},
+    scales:{x:{ticks:{color:tickC,maxRotation:0,autoSkip:true,maxTicksLimit:8},grid:{color:gridC}},
+      y:{reverse:!!reverse,title:{display:true,text:yTitle,color:tickC},ticks:{color:tickC},grid:{color:gridC}}}});
+  const rd=runs.filter(r=>r.km>0);  // ריצות עם מרחק (ללא אליפטי) לגרפי קצב/מרחק
+  const labels=rd.map(r=>r.d.toLocaleDateString('he-IL',{day:'2-digit',month:'2-digit'}));
+  const paceVals=rd.map(r=>r.pace?+(r.pace/60).toFixed(2):null);
+  mkChart($('paceChart'),{type:'line',data:{labels,datasets:[
+    {data:paceVals,borderColor:'#fc5200',backgroundColor:'rgba(252,82,0,.12)',tension:.3,spanGaps:true,pointRadius:2,fill:true,order:3},
+    {data:labels.map(()=>PLAN.goalPaceLo/60),borderColor:'rgba(55,214,122,.7)',borderDash:[5,4],pointRadius:0,order:1},
+    {data:labels.map(()=>PLAN.goalPaceHi/60),borderColor:'rgba(55,214,122,.7)',borderDash:[5,4],pointRadius:0,fill:'-1',backgroundColor:'rgba(55,214,122,.08)',order:2}
+  ]},options:Object.assign(baseOpts('דק׳/ק"מ',true),{plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.datasetIndex===0?fmtPace(rd[c.dataIndex].pace)+' /ק"מ':'יעד'}}}})});
+  const wk={};runs.forEach(r=>{const k=isoWeek(r.d);(wk[k]=wk[k]||{km:0}).km+=r.km;});
+  const weeks=Object.keys(wk).sort();
+  mkChart($('weeklyChart'),{type:'bar',data:{labels:weeks,datasets:[{data:weeks.map(w=>+wk[w].km.toFixed(1)),backgroundColor:'#37d67a'}]},options:baseOpts('ק"מ')});
+  mkChart($('distChart'),{type:'bar',data:{labels,datasets:[{data:rd.map(r=>+r.km.toFixed(2)),backgroundColor:'#36c5f0'}]},options:baseOpts('ק"מ')});
+  const sc=runs.filter(r=>r.hr&&r.pace).map(r=>{const z=zoneOf(r.hr);return{x:+(r.pace/60).toFixed(2),y:r.hr,c:z?z.c:'#888'};});
+  mkChart($('hrChart'),{type:'scatter',data:{datasets:[{data:sc,backgroundColor:sc.map(p=>p.c),pointRadius:4}]},
+    options:{responsive:true,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>'קצב '+fmtPace(c.raw.x*60)+' · דופק '+c.raw.y}}},
+      scales:{x:{title:{display:true,text:'קצב (דק׳/ק"מ)',color:tickC},ticks:{color:tickC},grid:{color:gridC}},
+        y:{title:{display:true,text:'דופק ממוצע',color:tickC},ticks:{color:tickC},grid:{color:gridC}}}}});
+}
+
+// ===================== סוג אימון + ניתוח =====================
+const WORKOUT_TYPES=[
+  {k:'easy',label:'ריצה קלה'},{k:'long',label:'ריצה ארוכה'},{k:'intervals',label:'אינטרוולים'},
+  {k:'tempo',label:'טמפו'},{k:'hills',label:'עליות'},{k:'recovery',label:'החלמה'},
+  {k:'race',label:'מרוץ / מבחן'},{k:'other',label:'אחר'},
+];
+const WT_LABEL=k=>{const t=WORKOUT_TYPES.find(x=>x.k===k);return t?t.label:'';};
+function getType(id){try{return localStorage.getItem('wtype_'+id)||'';}catch(e){return'';}}
+function setType(id,k){try{k?localStorage.setItem('wtype_'+id,k):localStorage.removeItem('wtype_'+id);}catch(e){}}
+function setWType(id,k){setType(id,k);const tr=document.getElementById('an-'+id);if(tr)tr.innerHTML='<td colspan="10"><div class="analysis-box">'+buildAnalysis(runById[id],k)+'</div></td>';}
+function toggleAnalysis(id){
+  const ex=document.getElementById('an-'+id);
+  if(ex){ex.remove();return;}
+  const row=document.getElementById('row-'+id);if(!row)return;
+  const tr=document.createElement('tr');tr.className='analysis-row';tr.id='an-'+id;
+  tr.innerHTML='<td colspan="10"><div class="analysis-box">'+buildAnalysis(runById[id],getType(id))+'</div></td>';
+  row.parentNode.insertBefore(tr,row.nextSibling);
+}
+
+function buildAnalysis(r,type){
+  const li=(ic,txt)=>'<li><span class="ic">'+ic+'</span><span>'+txt+'</span></li>';
+  if(!r) return '<h4>שגיאה</h4><div class="an-metrics">לא נמצאו נתוני אימון.</div>';
+  if(!type) return '<h4>בחר סוג אימון</h4><div class="an-metrics">בחר סוג מה-dropdown בעמודת "סוג אימון" כדי לקבל ניתוח מותאם.</div>';
+  const z=zoneOf(r.hr), zn=(z&&z.z)?z.name:'—';
+  const ell=isEll(r);
+  const elevPerKm=r.km?r.elev/r.km:0;
+  const projHalf=r.pace?fmtDur(r.pace*21.0975):'—';
+  const metrics=ell
+    ? 'אימון אליפטי · זמן '+fmtDur(r.mt)+(r.hr?' · דופק ממוצע '+Math.round(r.hr)+' ('+zn+')':' · אין נתוני דופק')+(r.max_hr?' · דופק מקס '+Math.round(r.max_hr):'')
+    : 'מרחק '+r.km.toFixed(2)+' ק"מ · זמן '+fmtDur(r.mt)+' · קצב '+fmtPace(r.pace)+'/ק"מ'+
+      (r.hr?' · דופק ממוצע '+Math.round(r.hr)+' ('+zn+')':' · אין נתוני דופק')+
+      (r.max_hr?' · דופק מקס '+Math.round(r.max_hr):'')+
+      ' · עלייה '+Math.round(r.elev)+' מ׳ ('+elevPerKm.toFixed(0)+' מ׳/ק"מ)';
+  const L=[];let tip='';
+  if(ell) L.push(li('🌀','אימון אליפטי — אין מרחק/קצב, אז הניתוח מתבסס על דופק, זון וזמן. מצוין כאימון אירובי ללא עומס על כף הרגל (הדורבן) — בדיוק מה שמתאים ל"חמישי אירובי קל" בתוכנית.'));
+
+  function z2verdict(){
+    if(!r.hr){L.push(li('ℹ️','אין נתוני דופק — אי אפשר להעריך את העומס. ודא שהשעון מדד דופק.'));return;}
+    const hr=Math.round(r.hr);
+    if(hr>=163) L.push(li('🔴','רצת חזק מדי — דופק '+hr+' זה זון 4 (אינטרוולים). ריצה קלה/ארוכה צריכה זון 2 (136–150). זה בדיוק הדפוס שהמאמן זיהה — תאט משמעותית, גם אם זה 8:30/ק"מ או הליכה משולבת.'));
+    else if(hr>=150) L.push(li('🟠','קצת מעל היעד — דופק '+hr+' זה זון 3 (טמפו). ריצה אירובית צריכה זון 2 (136–150). נסה להאט ב-30–45 ש׳/ק"מ.'));
+    else if(hr>=136) L.push(li('🟢','מצוין — דופק '+hr+' בדיוק בזון 2. ככה ריצה אירובית צריכה להרגיש.'));
+    else L.push(li('🔵','קל מאוד — דופק '+hr+' בזון 1. מעולה להחלמה; לריצת בסיס אפשר מעט יותר (זון 2).'));
+  }
+
+  switch(type){
+    case 'easy':
+      z2verdict();
+      if(r.pace&&r.pace<420) L.push(li('⚠️','הקצב ('+fmtPace(r.pace)+') מהיר מ-7:00/ק"מ — בשלב הזה ריצה "קלה" כנראה צריכה להיות איטית יותר. הקשב לדופק, לא לקצב.'));
+      tip='שמור cadence 165–170 (צעדים קטנים ומהירים) — יעיל יותר ומגן על כף הרגל (הדורבן).';break;
+    case 'long':{
+      z2verdict();
+      const b1=PLAN.base1.find(b=>b.week===weekNum);
+      L.push(li('📏','מרחק '+r.km.toFixed(1)+' ק"מ.'+(b1?' יעד הריצה הארוכה בשבוע '+weekNum+': '+b1.sat+'.':'')));
+      L.push(li('📈','דריפט דופק לקראת הסוף נורמלי בריצה ארוכה — אם הדופק מטפס בלי שהאצת, זה סימן לעייפות אירובית.'));
+      tip='בריצה ארוכה זון 2 קריטי במיוחד — זה מה שבונה סיבולת בלי לשבור את הגוף. cadence 165+.';break;}
+    case 'intervals':
+      L.push(li('ℹ️','באינטרוולים הממוצעים מטעים — הם כוללים את ההתאוששות. מה שחשוב: לגעת בזון 4 (163–177) בקטעי העבודה.'));
+      if(r.max_hr){const mx=Math.round(r.max_hr);
+        if(mx>=177) L.push(li('🟢','דופק מקס '+mx+' — הגעת לזון 5. עבדת חזק; ודא שזה היה בקטעי העבודה ולא דחיפת יתר.'));
+        else if(mx>=163) L.push(li('🟢','דופק מקס '+mx+' — נגעת בזון 4. עצימות טובה לאינטרוולים.'));
+        else L.push(li('🟠','דופק מקס רק '+mx+' — כנראה לא דחפת מספיק בקטעי העבודה (יעד: זון 4, 163+). בפעם הבאה תגביר.'));}
+      else L.push(li('ℹ️','אין דופק מקס — קשה להעריך עצימות הקטעים.'));
+      L.push(li('⏱️','קצב ממוצע ('+fmtPace(r.pace)+') כולל הליכה/ריצה קלה בין הקטעים — תקין שהוא איטי.'));
+      tip='בקטעי העבודה כוון cadence גבוה; קח התאוששות מלאה בין קטעים. אפל ווטש מהיד מדייק פחות בדופק באינטרוולים (lag).';break;
+    case 'tempo':
+      if(!r.hr) L.push(li('ℹ️','אין דופק — לא ניתן להעריך עצימות טמפו.'));
+      else{const hr=Math.round(r.hr);
+        if(hr>=150&&hr<163) L.push(li('🟢','דופק '+hr+' בזון 3 — בול עצימות טמפו ("מאתגר אך בר-קיימא").'));
+        else if(hr>=163) L.push(li('🟠','דופק '+hr+' בזון 4 — זה כבר סף/אינטרוולים, לא טמפו. טמפו = זון 3 (150–163). האט מעט.'));
+        else L.push(li('🟠','דופק '+hr+' מתחת לזון 3 — לא הגעת לעצימות טמפו. טמפו צריך להרגיש מאומץ אך נשלט.'));}
+      tip='טמפו אמיתי = קצב שאפשר להחזיק ~40–60 דק׳. שמור עצימות אחידה לאורך כל הקטע.';break;
+    case 'hills':
+      L.push(li('⛰️','עלייה מצטברת '+Math.round(r.elev)+' מ׳ ('+elevPerKm.toFixed(0)+' מ׳/ק"מ) — '+(elevPerKm>=15?'מסלול הררי':elevPerKm>=8?'מסלול גבעי':'עלייה מתונה')+'.'));
+      L.push(li('ℹ️','בעליות הדופק עולה והקצב יורד באופן טבעי — אל תשפוט את האימון לפי זון 2 או לפי הקצב.'));
+      if(r.hr) L.push(li('❤️','דופק ממוצע '+Math.round(r.hr)+' ('+zn+') — סביר שגבוה בגלל העליות, וזה בסדר.'));
+      tip='עבודת עליות בונה כוח ויעילות ריצה — מצוין לקראת שלב הבנייה. שמור cadence גבוה גם בעלייה (צעדים קצרים).';break;
+    case 'recovery':
+      if(!r.hr) L.push(li('ℹ️','אין דופק.'));
+      else if(r.hr<136) L.push(li('🟢','דופק '+Math.round(r.hr)+' בזון 1 — בדיוק מה שצריך להחלמה אקטיבית.'));
+      else L.push(li('🟠','דופק '+Math.round(r.hr)+' גבוה מדי להחלמה — ריצת החלמה צריכה זון 1 (<136). תאט מאוד, זה לא אימון איכות.'));
+      tip='ריצת החלמה נועדה להזרים דם בלי להוסיף עומס — אם זה מרגיש מאמץ, אתה רץ מהר מדי.';break;
+    case 'race':
+      L.push(li('🏁','קצב '+fmtPace(r.pace)+'/ק"מ לאורך '+r.km.toFixed(1)+' ק"מ.'));
+      L.push(li('🎯','בקצב הזה, זמן משוער לחצי מרתון: '+projHalf+'. יעד התוכנית: 6:00–6:30/ק"מ (2:06–2:17).'));
+      if(r.hr) L.push(li('❤️','דופק ממוצע '+Math.round(r.hr)+' ('+zn+').'));
+      tip='מבחן/מרוץ הוא הזדמנות מצוינת לכייל מחדש את הזונים ואת יעד הזמן — שתף את המאמן בתוצאה.';break;
+    default:
+      L.push(li('ℹ️','אימון כללי. דופק ממוצע '+(r.hr?Math.round(r.hr)+' ('+zn+')':'—')+', קצב '+fmtPace(r.pace)+'/ק"מ.'));
+      tip='בחר סוג ספציפי (קלה/ארוכה/טמפו/אינטרוולים/עליות) לקבלת ניתוח מדויק יותר.';
+  }
+  return '<h4>ניתוח: '+WT_LABEL(type)+'</h4><div class="an-metrics">'+metrics+'</div><ul class="an-list">'+L.join('')+'</ul>'+(tip?'<div class="an-tip">💡 '+tip+'</div>':'');
+}
+
+function renderTable(){
+  const sel=id=>{
+    const cur=getType(id);
+    return '<select class="wt-select" onchange="setWType('+id+',this.value)"><option value=""'+(cur?'':' selected')+'>— בחר —</option>'+
+      WORKOUT_TYPES.map(t=>'<option value="'+t.k+'"'+(cur===t.k?' selected':'')+'>'+t.label+'</option>').join('')+'</select>';
+  };
+  document.querySelector('#runsTable tbody').innerHTML=runs.slice().reverse().map(r=>{
+    const z=zoneOf(r.hr);
+    const zb=(z&&z.z)?'<span class="zbadge" style="background:'+z.c+'">'+z.name+'</span>':'—';
+    const ell=isEll(r);
+    const nameCell=(r.name||'')+(ell?' <span class="zbadge" style="background:#9b8cff">אליפטי</span>':'');
+    const kmCell=ell?'—':r.km.toFixed(2);
+    const paceCell=ell?'—':fmtPace(r.pace);
+    return '<tr id="row-'+r.id+'"><td>'+fmtWhen(r.d)+'</td><td>'+nameCell+'</td><td>'+kmCell+'</td><td>'+fmtDur(r.mt)+'</td><td>'+paceCell+'</td><td>'+(r.hr?Math.round(r.hr):'—')+'</td><td>'+zb+'</td><td>'+Math.round(r.elev)+'</td><td>'+sel(r.id)+'</td><td><button class="btn-an" onclick="toggleAnalysis('+r.id+')">ניתוח</button></td></tr>';
+  }).join('');
+}
+
+// ===================== אימוני כוח (מ-Strava) + סימון אזורי גוף =====================
+const MUSCLES=[
+  {k:'chest',label:'חזה',icon:'🫁'},{k:'back',label:'גב',icon:'🔙'},{k:'shoulders',label:'כתפיים',icon:'🤸'},
+  {k:'legs',label:'רגליים',icon:'🦵'},{k:'biceps',label:'יד קדמית',icon:'💪'},{k:'triceps',label:'יד אחורית',icon:'🦾'},
+  {k:'abs',label:'בטן',icon:'🧱'},
+];
+const ML=k=>{const m=MUSCLES.find(x=>x.k===k);return m?m.label:k;};
+function getAreas(id){try{return JSON.parse(localStorage.getItem('marea_'+id)||'[]');}catch(e){return[];}}
+function setAreas(id,a){try{localStorage.setItem('marea_'+id,JSON.stringify(a));}catch(e){}}
+function toggleArea(id,key,on){const a=getAreas(id);const i=a.indexOf(key);if(on&&i<0)a.push(key);if(!on&&i>=0)a.splice(i,1);setAreas(id,a);refreshPlanViews();}
+function refreshPlanViews(){const now=new Date();safe('week',renderWeekPlan);safe('focus',()=>renderFocus(now));safe('cards',renderCards);}
+function legsDoneInWeek(wNum){
+  const ws=dayStart(new Date(planStart));ws.setDate(ws.getDate()+(wNum-1)*7);
+  const we=new Date(ws);we.setDate(we.getDate()+7);
+  return strengthActs.some(r=>r.d>=ws&&r.d<we&&getAreas(r.id).indexOf('legs')>=0);
+}
+function renderStrength(){
+  const tb=document.querySelector('#strengthTable tbody');
+  if(!strengthActs.length){tb.innerHTML='<tr><td colspan="5" style="color:var(--muted)">לא נמצאו אימוני כוח ב-Strava. ודא שאתה מתעד אותם כ-Weight Training / Workout, ואז סנכרן מחדש.</td></tr>';return;}
+  tb.innerHTML=strengthActs.slice().reverse().map(r=>{
+    const areas=getAreas(r.id);
+    const bar=MUSCLES.map(m=>'<label class="muscle sm"><input type="checkbox" onchange="toggleArea('+r.id+',\''+m.k+'\',this.checked)"'+(areas.indexOf(m.k)>=0?' checked':'')+'> '+m.label+'</label>').join('');
+    return '<tr><td>'+fmtWhen(r.d)+'</td><td>'+(r.name||'')+'</td><td>'+fmtDur(r.mt)+'</td><td>'+(r.hr?Math.round(r.hr):'—')+'</td><td><div class="muscles-row">'+bar+'</div></td></tr>';
+  }).join('');
+}
+
+// ===================== הפעלה (אחרי שכל ההגדרות קיימות) =====================
+loadData();
+if(runs.length) render();
+</script>
+</body>
+</html>

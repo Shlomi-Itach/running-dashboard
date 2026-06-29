@@ -1,0 +1,3 @@
+# NEVER publish these — they contain your Strava Client Secret / tokens
+config.json
+tokens.json
