@@ -445,17 +445,12 @@ const PHASE_EMPH={
 
 function renderFocus(now){
   const todayDow=now.getDay();
-  const wkStart=dayStart(new Date(planStart));wkStart.setDate(wkStart.getDate()+(weekNum-1)*7);
-  const wkEnd=new Date(wkStart);wkEnd.setDate(wkEnd.getDate()+7);
-  const wkRuns=runs.filter(r=>r.d>=wkStart&&r.d<wkEnd);
-  const doneDows=new Set(wkRuns.map(r=>r.d.getDay()));
+  const {match}=planMatches(weekNum);
+  const isDone=w=> w.type==='strength'?legsDoneInWeek(weekNum):!!match[w.dow];
 
-  // האימון הבא הכי קרוב (אם של היום כבר בוצע — מדלג לבא)
+  // האימון הבא הכי קרוב (אימון שכבר בוצע — נדחה שבוע קדימה כדי שלא ייבחר, גם אם בוצע ביום אחר)
   const cand=PLAN.week.map(w=>({w,da:(w.dow-todayDow+7)%7}));
-  cand.forEach(c=>{
-    if(c.da===0&&c.w.type!=='strength'&&doneDows.has(c.w.dow))c.da=7;
-    if(c.da===0&&c.w.type==='strength'&&legsDoneInWeek(weekNum))c.da=7;
-  });
+  cand.forEach(c=>{ if(isDone(c.w)) c.da+=7; });
   cand.sort((a,b)=>a.da-b.da);
   const next=cand[0].w, daysAhead=cand[0].da;
 
@@ -470,9 +465,9 @@ function renderFocus(now){
 
   const weekRows=PLAN.week.map(w=>{
     let st;
-    if(w===next) st='📍 הבא';
-    else if(w.type!=='strength'&&doneDows.has(w.dow)) st='✅ בוצע';
-    else if(w.type==='strength') st=legsDoneInWeek(weekNum)?'✅ בוצע':'💪 כוח';
+    if(isDone(w)) st='✅ בוצע';
+    else if(w===next) st='📍 הבא';
+    else if(w.type==='strength') st='💪 כוח';
     else st='⬜ מתוכנן';
     return '<div class="fw-row'+(w===next?' next':'')+'"><span>'+w.day+' · '+w.name+'</span><span>'+st+'</span></div>';
   }).join('');
@@ -584,11 +579,23 @@ function renderZones(last){
   }
 }
 
+// התאמת ריצות שבוצעו לאימוני התוכנית: קודם לפי הסיווג (סוג אימון), אחר כך לפי היום.
+// כך אימון שבוצע ביום אחר מהמתוכנן עדיין מקושר למשבצת הנכונה.
+const SLOT_MATCH={intervals:['intervals','tempo'],easy:['easy','recovery'],long:['long']};
+function planMatches(wNum){
+  const ws=dayStart(new Date(planStart));ws.setDate(ws.getDate()+(wNum-1)*7);
+  const we=new Date(ws);we.setDate(we.getDate()+7);
+  const wkRuns=runs.filter(r=>r.d>=ws&&r.d<we);
+  const match={}, used={}, slots=PLAN.week.filter(w=>w.type!=='strength');
+  slots.forEach(w=>{const acc=SLOT_MATCH[w.type]||[];const m=wkRuns.find(r=>!used[r.id]&&acc.indexOf(getType(r.id))>=0);if(m){match[w.dow]={run:m,by:'type'};used[m.id]=1;}});
+  slots.forEach(w=>{if(match[w.dow])return;const m=wkRuns.find(r=>!used[r.id]&&r.d.getDay()===w.dow)||wkRuns.find(r=>!used[r.id]&&Math.abs(r.d.getDay()-w.dow)<=1);if(m){match[w.dow]={run:m,by:'day'};used[m.id]=1;}});
+  return {match,wkRuns,ws,we};
+}
+function planDone(wNum,w,match){ return w.type==='strength'?legsDoneInWeek(wNum):!!match[w.dow]; }
+
 function renderWeekPlan(){
-  const wkStart=dayStart(new Date(planStart));wkStart.setDate(wkStart.getDate()+(weekNum-1)*7);
-  const wkEnd=new Date(wkStart);wkEnd.setDate(wkEnd.getDate()+7);
-  $('weekTitle').innerHTML='📅 שבוע '+weekNum+' — תוכנית מול ביצוע <span class="hint">('+wkStart.toLocaleDateString('he-IL')+'–'+new Date(wkEnd-1).toLocaleDateString('he-IL')+')</span>';
-  const wkRuns=runs.filter(r=>r.d>=wkStart&&r.d<wkEnd);
+  const {match,ws,we}=planMatches(weekNum);
+  $('weekTitle').innerHTML='📅 שבוע '+weekNum+' — תוכנית מול ביצוע <span class="hint">('+ws.toLocaleDateString('he-IL')+'–'+new Date(we-1).toLocaleDateString('he-IL')+')</span>';
   const b1=PLAN.base1.find(b=>b.week===weekNum)||{};
   const detail={1:b1.mon||'',3:b1.wed||'',4:b1.thu||'',6:b1.sat||''};
   $('weekPlan').innerHTML=PLAN.week.map(w=>{
@@ -598,8 +605,13 @@ function renderWeekPlan(){
       else st='💪';
     }
     else{
-      const m=wkRuns.find(r=>r.d.getDay()===w.dow)||wkRuns.find(r=>Math.abs(r.d.getDay()-w.dow)<=1);
-      if(m){st='✅';const z=zoneOf(m.hr);const done=isEll(m)?'אליפטי · '+fmtDur(m.mt):m.km.toFixed(1)+' ק"מ · '+fmtPace(m.pace);extra='<div class="desc" style="color:var(--good);margin-top:4px">בוצע: '+done+' · דופק '+(m.hr?Math.round(m.hr):'—')+((z&&z.z)?' ('+z.name+')':'')+'</div>';}
+      const mm=match[w.dow];
+      if(mm){const m=mm.run;st='✅';const z=zoneOf(m.hr);
+        const done=isEll(m)?'אליפטי · '+fmtDur(m.mt):m.km.toFixed(1)+' ק"מ · '+fmtPace(m.pace);
+        const when=m.d.toLocaleDateString('he-IL',{weekday:'long'});
+        const note=mm.by==='type'?' · סווג כ'+WT_LABEL(getType(m.id)):'';
+        extra='<div class="desc" style="color:var(--good);margin-top:4px">בוצע ('+when+'): '+done+' · דופק '+(m.hr?Math.round(m.hr):'—')+((z&&z.z)?' ('+z.name+')':'')+note+'</div>';
+      }
     }
     return '<div class="day"><div class="dh"><span class="dn">'+w.day+'</span><span class="status">'+st+'</span></div><div class="desc">'+w.name+' · '+w.where+'</div>'+(detail[w.dow]?'<div class="desc" style="margin-top:4px;color:var(--accent2)">'+detail[w.dow]+'</div>':'')+extra+'</div>';
   }).join('');
