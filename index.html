@@ -139,11 +139,22 @@
   <div style="display:flex;align-items:center;gap:12px">
     <span class="sub" id="rangePill"></span>
     <button id="refreshBtn" onclick="doRefresh()">🔄 רענן</button>
+    <button id="syncBtn" onclick="toggleSyncPanel()">⚙️ <span id="syncStatus">לא מוגדר</span></button>
   </div>
 </header>
 
 <div class="wrap">
   <div id="content" style="display:none">
+
+    <div id="syncPanel" style="display:none" class="panel" dir="rtl">
+      <h3>⚙️ סנכרון בין מכשירים</h3>
+      <div class="sub" style="margin-bottom:10px">הדבק פעם אחת בכל מכשיר את הערכים מ-jsonbin, והסיווגים (סוג אימון + אזורי שריר) יסתנכרנו אוטומטית בכל מקום.</div>
+      <div class="goal">
+        <label>Bin ID<input id="syncBinInput" placeholder="לדוגמה: 665f1a2b..." style="width:260px"></label>
+        <label>Master Key (X-Master-Key)<input id="syncKeyInput" type="password" placeholder="$2a$10$..." style="width:260px"></label>
+        <button onclick="saveSyncSettings()">שמירה והפעלה</button>
+      </div>
+    </div>
 
     <div class="hero" id="hero"></div>
 
@@ -319,10 +330,66 @@ function doRefresh(){
   if(btn){btn.disabled=true;btn.textContent='⏳ טוען...';}
   fetch('strava-data.js?t='+Date.now(),{cache:'no-store'})
     .then(r=>{if(!r.ok)throw 0;return r.text();})
-    .then(txt=>{ eval(txt); loadData(); if(runs.length) render(); })
+    .then(txt=>{ eval(txt); loadData(); clsPull(()=>{ if(runs.length) render(); }); })
     .catch(()=>{ location.reload(); })
     .finally(()=>{ if(btn){btn.disabled=false;btn.textContent='🔄 רענן';} });
 }
+
+// ===================== סנכרון סיווגים בין מכשירים (jsonbin) =====================
+let CLS={wtype:{},marea:{}};
+let clsPushTimer=null;
+const syncBin=()=>localStorage.getItem('syncBin')||'';
+const syncKey=()=>localStorage.getItem('syncKey')||'';
+const syncOn=()=>!!(syncBin()&&syncKey());
+
+function clsInit(){
+  try{const c=JSON.parse(localStorage.getItem('clsCache')||'null'); if(c){CLS.wtype=c.wtype||{};CLS.marea=c.marea||{};}}catch(e){}
+  // הגירה חד-פעמית מהסימונים הישנים שנשמרו לפני הסנכרון
+  if(!Object.keys(CLS.wtype).length && !Object.keys(CLS.marea).length){
+    for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);
+      if(k&&k.indexOf('wtype_')===0) CLS.wtype[k.slice(6)]=localStorage.getItem(k);
+      else if(k&&k.indexOf('marea_')===0){try{CLS.marea[k.slice(6)]=JSON.parse(localStorage.getItem(k));}catch(e){}}}
+    clsSaveCache();
+  }
+  updateSyncUI();
+}
+function clsSaveCache(){try{localStorage.setItem('clsCache',JSON.stringify(CLS));}catch(e){}}
+function clsSave(){ clsSaveCache(); clsPush(); }
+function clsPush(){
+  if(!syncOn())return;
+  clearTimeout(clsPushTimer); setSyncStatus('שומר…');
+  clsPushTimer=setTimeout(()=>{
+    fetch('https://api.jsonbin.io/v3/b/'+syncBin(),{method:'PUT',
+      headers:{'Content-Type':'application/json','X-Master-Key':syncKey()},
+      body:JSON.stringify(CLS)})
+      .then(r=>{if(!r.ok)throw 0;setSyncStatus('מסונכרן ✓');})
+      .catch(()=>setSyncStatus('שגיאת סנכרון'));
+  },800);
+}
+function clsPull(cb){
+  if(!syncOn()){cb&&cb();return;}
+  setSyncStatus('טוען…');
+  fetch('https://api.jsonbin.io/v3/b/'+syncBin()+'/latest',{headers:{'X-Master-Key':syncKey(),'X-Bin-Meta':'false'}})
+    .then(r=>{if(!r.ok)throw 0;return r.json();})
+    .then(rec=>{ const d=(rec&&rec.record)?rec.record:rec;
+      CLS.wtype=Object.assign({},CLS.wtype,(d&&d.wtype)||{});
+      CLS.marea=Object.assign({},CLS.marea,(d&&d.marea)||{});
+      clsSaveCache(); setSyncStatus('מסונכרן ✓'); cb&&cb(); })
+    .catch(()=>{ setSyncStatus('שגיאת סנכרון'); cb&&cb(); });
+}
+function saveSyncSettings(){
+  localStorage.setItem('syncBin',($('syncBinInput').value||'').trim());
+  localStorage.setItem('syncKey',($('syncKeyInput').value||'').trim());
+  updateSyncUI();
+  clsPull(()=>{ clsPush(); if(runs.length) render(); });
+}
+function setSyncStatus(t){const e=$('syncStatus'); if(e)e.textContent=t;}
+function updateSyncUI(){
+  setSyncStatus(syncOn()?'מסונכרן ✓':'לא מוגדר');
+  if($('syncBinInput'))$('syncBinInput').value=syncBin();
+  if($('syncKeyInput'))$('syncKeyInput').value=syncKey();
+}
+function toggleSyncPanel(){const p=$('syncPanel'); if(p)p.style.display=(!p.style.display||p.style.display==='none')?'block':'none';}
 
 function render(){
   const first=runs[0].d,last=runs[runs.length-1].d;
@@ -576,8 +643,8 @@ const WORKOUT_TYPES=[
   {k:'race',label:'מרוץ / מבחן'},{k:'other',label:'אחר'},
 ];
 const WT_LABEL=k=>{const t=WORKOUT_TYPES.find(x=>x.k===k);return t?t.label:'';};
-function getType(id){try{return localStorage.getItem('wtype_'+id)||'';}catch(e){return'';}}
-function setType(id,k){try{k?localStorage.setItem('wtype_'+id,k):localStorage.removeItem('wtype_'+id);}catch(e){}}
+function getType(id){return CLS.wtype[id]||'';}
+function setType(id,k){ if(k)CLS.wtype[id]=k; else delete CLS.wtype[id]; clsSave(); }
 function setWType(id,k){setType(id,k);const tr=document.getElementById('an-'+id);if(tr)tr.innerHTML='<td colspan="10"><div class="analysis-box">'+buildAnalysis(runById[id],k)+'</div></td>';}
 function toggleAnalysis(id){
   const ex=document.getElementById('an-'+id);
@@ -687,8 +754,8 @@ const MUSCLES=[
   {k:'abs',label:'בטן',icon:'🧱'},
 ];
 const ML=k=>{const m=MUSCLES.find(x=>x.k===k);return m?m.label:k;};
-function getAreas(id){try{return JSON.parse(localStorage.getItem('marea_'+id)||'[]');}catch(e){return[];}}
-function setAreas(id,a){try{localStorage.setItem('marea_'+id,JSON.stringify(a));}catch(e){}}
+function getAreas(id){return CLS.marea[id]||[];}
+function setAreas(id,a){ if(a&&a.length)CLS.marea[id]=a.slice(); else delete CLS.marea[id]; clsSave(); }
 function toggleArea(id,key,on){const a=getAreas(id);const i=a.indexOf(key);if(on&&i<0)a.push(key);if(!on&&i>=0)a.splice(i,1);setAreas(id,a);refreshPlanViews();}
 function refreshPlanViews(){const now=new Date();safe('week',renderWeekPlan);safe('focus',()=>renderFocus(now));safe('cards',renderCards);}
 function legsDoneInWeek(wNum){
@@ -707,8 +774,10 @@ function renderStrength(){
 }
 
 // ===================== הפעלה (אחרי שכל ההגדרות קיימות) =====================
+clsInit();
 loadData();
 if(runs.length) render();
+clsPull(()=>{ if(runs.length) render(); });   // משיכת סיווגים מהענן (אם הסנכרון מוגדר)
 </script>
 </body>
 </html>
