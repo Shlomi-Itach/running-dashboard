@@ -359,10 +359,15 @@ function clsPush(){
   if(!syncOn())return;
   clearTimeout(clsPushTimer); setSyncStatus('שומר…');
   clsPushTimer=setTimeout(()=>{
-    fetch('https://api.jsonbin.io/v3/b/'+syncBin(),{method:'PUT',
-      headers:{'Content-Type':'application/json','X-Master-Key':syncKey()},
-      body:JSON.stringify(CLS)})
-      .then(r=>{if(!r.ok)throw 0;setSyncStatus('מסונכרן ✓');})
+    const K=syncKey();
+    // קרא-מזג-כתוב: מושך את הגרסה ברשת וממזג לפני הכתיבה, כדי לא לדרוס סימונים ממכשיר אחר
+    fetch('https://api.jsonbin.io/v3/b/'+syncBin()+'/latest',{headers:{'X-Master-Key':K,'X-Bin-Meta':'false'}})
+      .then(r=>r.ok?r.json():null)
+      .then(rec=>{ const d=(rec&&rec.record)?rec.record:rec;
+        if(d){ CLS.wtype=Object.assign({},d.wtype||{},CLS.wtype); CLS.marea=Object.assign({},d.marea||{},CLS.marea); clsSaveCache(); }
+        return fetch('https://api.jsonbin.io/v3/b/'+syncBin(),{method:'PUT',
+          headers:{'Content-Type':'application/json','X-Master-Key':K},body:JSON.stringify(CLS)}); })
+      .then(r=>{if(r&&!r.ok)throw 0;setSyncStatus('מסונכרן ✓');})
       .catch(()=>setSyncStatus('שגיאת סנכרון'));
   },800);
 }
