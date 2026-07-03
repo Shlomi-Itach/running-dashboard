@@ -4165,4 +4165,4 @@ window.STRAVA_DATA = [
     "calories": null
   }
 ];
-window.STRAVA_SYNCED_AT = '2026-07-03T16:58:09';
+window.STRAVA_SYNCED_AT = '2026-07-03T17:00:45';
