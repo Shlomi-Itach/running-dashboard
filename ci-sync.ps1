@@ -52,10 +52,56 @@ $acts = $all | Where-Object { $_.type -match $keep } | ForEach-Object {
         avg_cadence = $_.average_cadence
         suffer      = $_.suffer_score
         calories    = $_.kilojoules
+        z           = $null
     }
 }
 $acts = @($acts)
 Write-Host "Kept $($acts.Count) (runs/elliptical/strength)."
+
+# ---- time-in-zone: fetch HR streams for aerobic activities (incremental) ----
+function Get-ZoneTimes($hr, $tm) {
+    $z = @(0, 0, 0, 0, 0)   # zones 1..5 by our HR bounds: <136,136-150,150-163,163-177,>=177
+    for ($i = 1; $i -lt $hr.Count; $i++) {
+        $dt = $tm[$i] - $tm[$i - 1]
+        if ($dt -le 0 -or $dt -gt 30) { $dt = 1 }   # guard pauses / gaps
+        $h = $hr[$i]
+        $b = if ($h -lt 136) { 0 } elseif ($h -lt 150) { 1 } elseif ($h -lt 163) { 2 } elseif ($h -lt 177) { 3 } else { 4 }
+        $z[$b] += $dt
+    }
+    return , $z
+}
+
+# reuse zone data already computed (so we don't re-fetch streams every run)
+$existingZ = @{}
+$dataFile  = Join-Path (Get-Location) 'strava-data.js'
+if (Test-Path $dataFile) {
+    try {
+        $old = Get-Content $dataFile -Raw
+        $mm  = [regex]::Match($old, '(?s)window\.STRAVA_DATA\s*=\s*(\[.*\]);\s*window\.STRAVA_SYNCED_AT')
+        if ($mm.Success) {
+            (ConvertFrom-Json $mm.Groups[1].Value) | ForEach-Object { if ($_.z) { $existingZ[[string]$_.id] = $_.z } }
+        }
+    } catch { Write-Host "Could not read existing zones: $($_.Exception.Message)" }
+}
+
+$fetched = 0; $cap = 180
+foreach ($a in $acts) {
+    $idKey = [string]$a.id
+    if ($existingZ.ContainsKey($idKey)) { $a.z = $existingZ[$idKey]; continue }
+    if (-not $a.avg_hr) { continue }
+    if ($a.type -match 'WeightTraining|Workout|Crossfit|Hiit') { continue }   # aerobic only
+    if ($fetched -ge $cap) { continue }
+    try {
+        $s = Invoke-RestMethod -Uri "https://www.strava.com/api/v3/activities/$($a.id)/streams?keys=heartrate,time&key_by_type=true" -Headers $headers -Method Get
+        if ($s.heartrate.data -and $s.time.data) { $a.z = Get-ZoneTimes $s.heartrate.data $s.time.data }
+        $fetched++
+    } catch {
+        if ($_.Exception.Response -and [int]$_.Exception.Response.StatusCode -eq 429) {
+            Write-Host "Rate limited after $fetched stream fetches - stopping (rest next run)."; break
+        }
+    }
+}
+Write-Host "Fetched HR streams for $fetched activities."
 
 $json = if ($acts.Count -eq 0) { "[]" }
         elseif ($acts.Count -eq 1) { "[" + ($acts[0] | ConvertTo-Json -Depth 4 -Compress) + "]" }
