@@ -14,7 +14,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 20.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 19146616106,
@@ -31,7 +32,14 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 41.0,
-    "calories": null
+    "calories": null,
+    "z": [
+      99,
+      971,
+      942,
+      0,
+      0
+    ]
   },
   {
     "id": 19139627807,
@@ -48,7 +56,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 12.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 19132529971,
@@ -65,7 +74,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 12.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 19119644974,
@@ -82,7 +92,14 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 85.0,
-    "calories": null
+    "calories": null,
+    "z": [
+      448,
+      600,
+      618,
+      960,
+      278
+    ]
   },
   {
     "id": 19110923811,
@@ -99,7 +116,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": null,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 19081424130,
@@ -116,7 +134,14 @@ window.STRAVA_DATA = [
     "elev_gain": 83.2,
     "avg_cadence": null,
     "suffer": 196.0,
-    "calories": 1065.3
+    "calories": 1065.3,
+    "z": [
+      106,
+      654,
+      2129,
+      2225,
+      496
+    ]
   },
   {
     "id": 19081422655,
@@ -133,7 +158,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 12.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 19058580480,
@@ -150,7 +176,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 27.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 19044293724,
@@ -167,7 +194,14 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 58.0,
-    "calories": null
+    "calories": null,
+    "z": [
+      489,
+      433,
+      389,
+      869,
+      97
+    ]
   },
   {
     "id": 19031822645,
@@ -184,7 +218,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 21.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 19017524778,
@@ -201,7 +236,14 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 19.0,
-    "calories": null
+    "calories": null,
+    "z": [
+      1970,
+      1630,
+      0,
+      0,
+      0
+    ]
   },
   {
     "id": 19005662007,
@@ -218,7 +260,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 15.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 19000596306,
@@ -235,7 +278,14 @@ window.STRAVA_DATA = [
     "elev_gain": 44.8,
     "avg_cadence": null,
     "suffer": 138.0,
-    "calories": 710.3
+    "calories": 710.3,
+    "z": [
+      63,
+      157,
+      1390,
+      1441,
+      561
+    ]
   },
   {
     "id": 18980955214,
@@ -252,7 +302,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 20.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 18967618307,
@@ -269,7 +320,14 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 51.0,
-    "calories": null
+    "calories": null,
+    "z": [
+      43,
+      56,
+      315,
+      1020,
+      0
+    ]
   },
   {
     "id": 18967388556,
@@ -286,7 +344,14 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 10.0,
-    "calories": null
+    "calories": null,
+    "z": [
+      950,
+      851,
+      0,
+      0,
+      0
+    ]
   },
   {
     "id": 18952815258,
@@ -303,7 +368,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 13.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 18939184647,
@@ -320,7 +386,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 17.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 18898226277,
@@ -337,7 +404,14 @@ window.STRAVA_DATA = [
     "elev_gain": 28.2,
     "avg_cadence": null,
     "suffer": 97.0,
-    "calories": 618.3
+    "calories": 618.3,
+    "z": [
+      54,
+      282,
+      1647,
+      1142,
+      0
+    ]
   },
   {
     "id": 18897423369,
@@ -354,7 +428,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 14.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 18874301770,
@@ -371,7 +446,14 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 67.0,
-    "calories": null
+    "calories": null,
+    "z": [
+      468,
+      528,
+      374,
+      856,
+      258
+    ]
   },
   {
     "id": 18860728785,
@@ -388,7 +470,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 14.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 18846751355,
@@ -405,7 +488,14 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 34.0,
-    "calories": null
+    "calories": null,
+    "z": [
+      207,
+      90,
+      288,
+      619,
+      0
+    ]
   },
   {
     "id": 18846620786,
@@ -422,7 +512,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 17.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 18838738481,
@@ -439,7 +530,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 18.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 18818091391,
@@ -456,7 +548,14 @@ window.STRAVA_DATA = [
     "elev_gain": 24.8,
     "avg_cadence": null,
     "suffer": 104.0,
-    "calories": 529.5
+    "calories": 529.5,
+    "z": [
+      92,
+      44,
+      745,
+      1358,
+      220
+    ]
   },
   {
     "id": 18764998558,
@@ -473,7 +572,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 10.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 18751704981,
@@ -490,7 +590,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 15.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 18737128688,
@@ -507,7 +608,14 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 63.0,
-    "calories": null
+    "calories": null,
+    "z": [
+      74,
+      82,
+      687,
+      1057,
+      0
+    ]
   },
   {
     "id": 18710715480,
@@ -524,7 +632,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 23.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 18698779157,
@@ -541,7 +650,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 30.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 18670269313,
@@ -558,7 +668,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 14.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 18646480172,
@@ -575,7 +686,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 22.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 18553367662,
@@ -592,7 +704,14 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 40.0,
-    "calories": null
+    "calories": null,
+    "z": [
+      55,
+      325,
+      466,
+      572,
+      0
+    ]
   },
   {
     "id": 18524501447,
@@ -609,7 +728,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 15.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 18516555754,
@@ -626,7 +746,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 17.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 18499669695,
@@ -643,7 +764,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 12.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 18486191156,
@@ -660,7 +782,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 18.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 18472243959,
@@ -677,7 +800,14 @@ window.STRAVA_DATA = [
     "elev_gain": 57.8,
     "avg_cadence": null,
     "suffer": 104.0,
-    "calories": 711.3
+    "calories": 711.3,
+    "z": [
+      105,
+      490,
+      2689,
+      495,
+      8
+    ]
   },
   {
     "id": 18459494790,
@@ -694,7 +824,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 20.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 18446719069,
@@ -711,7 +842,14 @@ window.STRAVA_DATA = [
     "elev_gain": 28.0,
     "avg_cadence": null,
     "suffer": 96.0,
-    "calories": 530.8
+    "calories": 530.8,
+    "z": [
+      46,
+      78,
+      1535,
+      1173,
+      0
+    ]
   },
   {
     "id": 18421610349,
@@ -728,7 +866,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 33.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 18395380782,
@@ -745,7 +884,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 24.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 18380439195,
@@ -762,7 +902,14 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 53.0,
-    "calories": null
+    "calories": null,
+    "z": [
+      83,
+      605,
+      1712,
+      0,
+      0
+    ]
   },
   {
     "id": 18354028337,
@@ -779,7 +926,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 13.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 18341289685,
@@ -796,7 +944,14 @@ window.STRAVA_DATA = [
     "elev_gain": 80.4,
     "avg_cadence": null,
     "suffer": 232.0,
-    "calories": 1158.9
+    "calories": 1158.9,
+    "z": [
+      64,
+      753,
+      1221,
+      3618,
+      318
+    ]
   },
   {
     "id": 18328307297,
@@ -813,7 +968,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 25.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 18314576220,
@@ -830,7 +986,14 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 51.0,
-    "calories": null
+    "calories": null,
+    "z": [
+      638,
+      693,
+      388,
+      753,
+      23
+    ]
   },
   {
     "id": 18301219965,
@@ -847,7 +1010,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 17.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 18288044356,
@@ -864,7 +1028,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 2.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 18287805141,
@@ -881,7 +1046,14 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 38.0,
-    "calories": null
+    "calories": null,
+    "z": [
+      206,
+      899,
+      970,
+      0,
+      0
+    ]
   },
   {
     "id": 18287805118,
@@ -898,7 +1070,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 19.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 18247563313,
@@ -915,7 +1088,14 @@ window.STRAVA_DATA = [
     "elev_gain": 58.4,
     "avg_cadence": null,
     "suffer": 126.0,
-    "calories": 888.2
+    "calories": 888.2,
+    "z": [
+      76,
+      1074,
+      3290,
+      340,
+      0
+    ]
   },
   {
     "id": 18235160981,
@@ -932,7 +1112,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 18.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 18220863377,
@@ -949,7 +1130,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 10.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 18208319457,
@@ -966,7 +1148,14 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 46.0,
-    "calories": null
+    "calories": null,
+    "z": [
+      642,
+      694,
+      352,
+      711,
+      0
+    ]
   },
   {
     "id": 18192953811,
@@ -983,7 +1172,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 18.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 18141511484,
@@ -1000,7 +1190,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 29.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 18127794010,
@@ -1017,7 +1208,14 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 11.0,
-    "calories": null
+    "calories": null,
+    "z": [
+      2269,
+      432,
+      0,
+      0,
+      0
+    ]
   },
   {
     "id": 18100410981,
@@ -1034,7 +1232,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 24.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 18087017782,
@@ -1051,7 +1250,14 @@ window.STRAVA_DATA = [
     "elev_gain": 5.3,
     "avg_cadence": null,
     "suffer": 67.0,
-    "calories": 439.1
+    "calories": 439.1,
+    "z": [
+      49,
+      783,
+      1239,
+      382,
+      36
+    ]
   },
   {
     "id": 18074007798,
@@ -1068,7 +1274,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 16.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 18065514093,
@@ -1085,7 +1292,14 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 111.0,
-    "calories": 748.7
+    "calories": 748.7,
+    "z": [
+      83,
+      909,
+      2940,
+      246,
+      0
+    ]
   },
   {
     "id": 18050489019,
@@ -1102,7 +1316,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 26.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 18023105369,
@@ -1119,7 +1334,14 @@ window.STRAVA_DATA = [
     "elev_gain": 6.4,
     "avg_cadence": null,
     "suffer": 182.0,
-    "calories": 655.5
+    "calories": 655.5,
+    "z": [
+      67,
+      113,
+      158,
+      3133,
+      258
+    ]
   },
   {
     "id": 18010432698,
@@ -1136,7 +1358,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 26.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 17994652992,
@@ -1153,7 +1376,14 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 13.0,
-    "calories": null
+    "calories": null,
+    "z": [
+      1669,
+      1034,
+      0,
+      0,
+      0
+    ]
   },
   {
     "id": 17982752978,
@@ -1170,7 +1400,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 19.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 17970628330,
@@ -1187,7 +1418,14 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 20.0,
-    "calories": null
+    "calories": null,
+    "z": [
+      3143,
+      1262,
+      0,
+      0,
+      0
+    ]
   },
   {
     "id": 17970126866,
@@ -1204,7 +1442,14 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 1.0,
-    "calories": null
+    "calories": null,
+    "z": [
+      603,
+      0,
+      0,
+      0,
+      0
+    ]
   },
   {
     "id": 17958416400,
@@ -1221,7 +1466,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 24.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 17934511013,
@@ -1238,7 +1484,14 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 112.0,
-    "calories": null
+    "calories": null,
+    "z": [
+      151,
+      205,
+      601,
+      2004,
+      40
+    ]
   },
   {
     "id": 17920982967,
@@ -1255,7 +1508,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 19.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 17896064502,
@@ -1272,7 +1526,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 11.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 17884510146,
@@ -1289,7 +1544,14 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 22.0,
-    "calories": null
+    "calories": null,
+    "z": [
+      2549,
+      1702,
+      0,
+      0,
+      0
+    ]
   },
   {
     "id": 17873687366,
@@ -1306,7 +1568,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 27.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 17862102075,
@@ -1323,7 +1586,14 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 26.0,
-    "calories": null
+    "calories": null,
+    "z": [
+      1753,
+      1672,
+      222,
+      0,
+      0
+    ]
   },
   {
     "id": 17836833181,
@@ -1340,7 +1610,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 22.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 17824402778,
@@ -1357,7 +1628,14 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 16.0,
-    "calories": null
+    "calories": null,
+    "z": [
+      1346,
+      1353,
+      0,
+      0,
+      0
+    ]
   },
   {
     "id": 17811147405,
@@ -1374,7 +1652,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 13.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 17798949737,
@@ -1391,7 +1670,14 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 23.0,
-    "calories": null
+    "calories": null,
+    "z": [
+      2377,
+      1823,
+      0,
+      0,
+      0
+    ]
   },
   {
     "id": 17763134021,
@@ -1408,7 +1694,14 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 15.0,
-    "calories": null
+    "calories": null,
+    "z": [
+      1839,
+      1111,
+      0,
+      0,
+      0
+    ]
   },
   {
     "id": 17750580719,
@@ -1425,7 +1718,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 24.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 17739079485,
@@ -1442,7 +1736,14 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 17.0,
-    "calories": null
+    "calories": null,
+    "z": [
+      1114,
+      1586,
+      0,
+      0,
+      0
+    ]
   },
   {
     "id": 17726723968,
@@ -1459,7 +1760,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 23.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 17715417523,
@@ -1476,7 +1778,14 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 25.0,
-    "calories": null
+    "calories": null,
+    "z": [
+      1371,
+      2229,
+      0,
+      0,
+      0
+    ]
   },
   {
     "id": 17705201118,
@@ -1493,7 +1802,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 24.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 17693629211,
@@ -1510,7 +1820,14 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 15.0,
-    "calories": null
+    "calories": null,
+    "z": [
+      1368,
+      1332,
+      0,
+      0,
+      0
+    ]
   },
   {
     "id": 17656663869,
@@ -1527,7 +1844,14 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 36.0,
-    "calories": null
+    "calories": null,
+    "z": [
+      777,
+      1347,
+      581,
+      0,
+      0
+    ]
   },
   {
     "id": 17643692283,
@@ -1544,7 +1868,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 8.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 17632066511,
@@ -1561,7 +1886,14 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 109.0,
-    "calories": null
+    "calories": null,
+    "z": [
+      74,
+      180,
+      243,
+      1190,
+      635
+    ]
   },
   {
     "id": 17621659526,
@@ -1578,7 +1910,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 13.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 17558568158,
@@ -1595,7 +1928,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 17.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 17526693104,
@@ -1612,7 +1946,14 @@ window.STRAVA_DATA = [
     "elev_gain": 30.8,
     "avg_cadence": null,
     "suffer": 109.0,
-    "calories": 533.9
+    "calories": 533.9,
+    "z": [
+      48,
+      107,
+      434,
+      1991,
+      54
+    ]
   },
   {
     "id": 17502359965,
@@ -1629,7 +1970,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 15.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 17490558548,
@@ -1646,7 +1988,14 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 61.0,
-    "calories": null
+    "calories": null,
+    "z": [
+      777,
+      662,
+      489,
+      845,
+      140
+    ]
   },
   {
     "id": 17479098212,
@@ -1663,7 +2012,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 15.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 17428462450,
@@ -1680,7 +2030,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 25.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 17370551042,
@@ -1697,7 +2048,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 18.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 17358719207,
@@ -1714,7 +2066,14 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 77.0,
-    "calories": null
+    "calories": null,
+    "z": [
+      370,
+      607,
+      668,
+      1101,
+      21
+    ]
   },
   {
     "id": 17346764672,
@@ -1731,7 +2090,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 14.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 17335649446,
@@ -1748,7 +2108,14 @@ window.STRAVA_DATA = [
     "elev_gain": 30.2,
     "avg_cadence": null,
     "suffer": 67.0,
-    "calories": 575.8
+    "calories": 575.8,
+    "z": [
+      167,
+      1359,
+      1640,
+      0,
+      0
+    ]
   },
   {
     "id": 17335649091,
@@ -1765,7 +2132,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 10.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 17313463846,
@@ -1782,7 +2150,14 @@ window.STRAVA_DATA = [
     "elev_gain": 27.2,
     "avg_cadence": null,
     "suffer": 68.0,
-    "calories": 528.4
+    "calories": 528.4,
+    "z": [
+      158,
+      843,
+      1308,
+      514,
+      0
+    ]
   },
   {
     "id": 17303555241,
@@ -1799,7 +2174,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 21.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 17280039860,
@@ -1816,7 +2192,14 @@ window.STRAVA_DATA = [
     "elev_gain": 59.2,
     "avg_cadence": null,
     "suffer": 89.0,
-    "calories": 572.3
+    "calories": 572.3,
+    "z": [
+      99,
+      303,
+      1233,
+      1156,
+      38
+    ]
   },
   {
     "id": 17268126315,
@@ -1833,7 +2216,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 11.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 17261907652,
@@ -1850,7 +2234,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 20.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 17234301855,
@@ -1867,7 +2252,14 @@ window.STRAVA_DATA = [
     "elev_gain": 18.0,
     "avg_cadence": null,
     "suffer": 56.0,
-    "calories": 439.5
+    "calories": 439.5,
+    "z": [
+      97,
+      735,
+      1108,
+      434,
+      9
+    ]
   },
   {
     "id": 17213625306,
@@ -1884,7 +2276,14 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 14.0,
-    "calories": null
+    "calories": null,
+    "z": [
+      1517,
+      1184,
+      0,
+      0,
+      0
+    ]
   },
   {
     "id": 17201604005,
@@ -1901,7 +2300,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 14.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 17190679838,
@@ -1918,7 +2318,14 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 103.0,
-    "calories": null
+    "calories": null,
+    "z": [
+      82,
+      325,
+      607,
+      563,
+      868
+    ]
   },
   {
     "id": 17179050754,
@@ -1935,7 +2342,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 17.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 17147193036,
@@ -1952,7 +2360,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 20.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 17138563461,
@@ -1969,7 +2378,14 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 92.0,
-    "calories": null
+    "calories": null,
+    "z": [
+      259,
+      609,
+      441,
+      794,
+      597
+    ]
   },
   {
     "id": 17123520946,
@@ -1986,7 +2402,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 14.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 17099982639,
@@ -2003,7 +2420,14 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 37.0,
-    "calories": null
+    "calories": null,
+    "z": [
+      0,
+      55,
+      1267,
+      0,
+      0
+    ]
   },
   {
     "id": 17099909480,
@@ -2020,7 +2444,14 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 43.0,
-    "calories": null
+    "calories": null,
+    "z": [
+      85,
+      226,
+      842,
+      372,
+      0
+    ]
   },
   {
     "id": 17088173798,
@@ -2037,7 +2468,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 12.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 17076981744,
@@ -2054,7 +2486,14 @@ window.STRAVA_DATA = [
     "elev_gain": 38.6,
     "avg_cadence": null,
     "suffer": 110.0,
-    "calories": 657.7
+    "calories": 657.7,
+    "z": [
+      190,
+      219,
+      1771,
+      1363,
+      0
+    ]
   },
   {
     "id": 17076554011,
@@ -2071,7 +2510,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 14.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 17055289363,
@@ -2088,7 +2528,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 24.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 16996816053,
@@ -2105,7 +2546,14 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 19.0,
-    "calories": null
+    "calories": null,
+    "z": [
+      3421,
+      922,
+      0,
+      0,
+      0
+    ]
   },
   {
     "id": 16990374260,
@@ -2122,7 +2570,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 18.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 16990374255,
@@ -2139,7 +2588,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 3.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 16976037223,
@@ -2156,7 +2606,14 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 39.0,
-    "calories": null
+    "calories": null,
+    "z": [
+      388,
+      607,
+      949,
+      118,
+      0
+    ]
   },
   {
     "id": 16964267689,
@@ -2173,7 +2630,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 16.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 16941847094,
@@ -2190,7 +2648,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": null,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 16919763935,
@@ -2207,7 +2666,14 @@ window.STRAVA_DATA = [
     "elev_gain": 49.0,
     "avg_cadence": null,
     "suffer": 187.0,
-    "calories": 887.7
+    "calories": 887.7,
+    "z": [
+      55,
+      308,
+      1249,
+      2441,
+      309
+    ]
   },
   {
     "id": 16909616049,
@@ -2224,7 +2690,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 24.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 16884511522,
@@ -2241,7 +2708,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 4.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 16884511514,
@@ -2258,7 +2726,14 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 17.0,
-    "calories": null
+    "calories": null,
+    "z": [
+      1021,
+      1680,
+      0,
+      0,
+      0
+    ]
   },
   {
     "id": 16878097225,
@@ -2275,7 +2750,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 18.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 16868016826,
@@ -2292,7 +2768,14 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 83.0,
-    "calories": null
+    "calories": null,
+    "z": [
+      154,
+      456,
+      2570,
+      59,
+      0
+    ]
   },
   {
     "id": 16842076873,
@@ -2309,7 +2792,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 35.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 16825861414,
@@ -2326,7 +2810,14 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 62.0,
-    "calories": null
+    "calories": null,
+    "z": [
+      727,
+      643,
+      1063,
+      580,
+      64
+    ]
   },
   {
     "id": 16816777591,
@@ -2343,7 +2834,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 10.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 16799172382,
@@ -2360,7 +2852,14 @@ window.STRAVA_DATA = [
     "elev_gain": 26.2,
     "avg_cadence": null,
     "suffer": 106.0,
-    "calories": 529.8
+    "calories": 529.8,
+    "z": [
+      77,
+      292,
+      684,
+      1594,
+      77
+    ]
   },
   {
     "id": 16782388710,
@@ -2377,7 +2876,14 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 38.0,
-    "calories": null
+    "calories": null,
+    "z": [
+      580,
+      1671,
+      482,
+      5,
+      0
+    ]
   },
   {
     "id": 16755311370,
@@ -2394,7 +2900,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 17.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 16727600731,
@@ -2411,7 +2918,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 14.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 16713857980,
@@ -2428,7 +2936,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 31.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 16700975616,
@@ -2445,7 +2954,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 14.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 16700779606,
@@ -2462,7 +2972,14 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 57.0,
-    "calories": null
+    "calories": null,
+    "z": [
+      60,
+      182,
+      1450,
+      196,
+      15
+    ]
   },
   {
     "id": 16691263410,
@@ -2479,7 +2996,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 24.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 16645546825,
@@ -2496,7 +3014,14 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 114.0,
-    "calories": null
+    "calories": null,
+    "z": [
+      354,
+      943,
+      787,
+      1120,
+      511
+    ]
   },
   {
     "id": 16625017291,
@@ -2513,7 +3038,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 24.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 16606087042,
@@ -2530,7 +3056,14 @@ window.STRAVA_DATA = [
     "elev_gain": 36.4,
     "avg_cadence": null,
     "suffer": 154.0,
-    "calories": 613.0
+    "calories": 613.0,
+    "z": [
+      45,
+      93,
+      462,
+      1641,
+      892
+    ]
   },
   {
     "id": 16589206488,
@@ -2547,7 +3080,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 53.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 16579349850,
@@ -2564,7 +3098,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 30.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 16568761821,
@@ -2581,7 +3116,14 @@ window.STRAVA_DATA = [
     "elev_gain": 42.4,
     "avg_cadence": null,
     "suffer": 73.0,
-    "calories": 486.9
+    "calories": 486.9,
+    "z": [
+      247,
+      477,
+      573,
+      973,
+      126
+    ]
   },
   {
     "id": 16549321559,
@@ -2598,7 +3140,14 @@ window.STRAVA_DATA = [
     "elev_gain": 31.8,
     "avg_cadence": null,
     "suffer": 92.0,
-    "calories": 489.3
+    "calories": 489.3,
+    "z": [
+      64,
+      119,
+      810,
+      1470,
+      41
+    ]
   },
   {
     "id": 16521658218,
@@ -2615,7 +3164,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 25.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 16491778123,
@@ -2632,7 +3182,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 17.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 16481508178,
@@ -2649,7 +3200,14 @@ window.STRAVA_DATA = [
     "elev_gain": 36.8,
     "avg_cadence": null,
     "suffer": 52.0,
-    "calories": 441.2
+    "calories": 441.2,
+    "z": [
+      66,
+      606,
+      1482,
+      0,
+      0
+    ]
   },
   {
     "id": 16461594059,
@@ -2666,7 +3224,14 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 93.0,
-    "calories": null
+    "calories": null,
+    "z": [
+      117,
+      1069,
+      1663,
+      807,
+      0
+    ]
   },
   {
     "id": 16461594012,
@@ -2683,7 +3248,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 13.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 16442296759,
@@ -2700,7 +3266,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 12.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 16431805051,
@@ -2717,7 +3284,14 @@ window.STRAVA_DATA = [
     "elev_gain": 47.0,
     "avg_cadence": null,
     "suffer": 91.0,
-    "calories": 442.8
+    "calories": 442.8,
+    "z": [
+      13,
+      146,
+      372,
+      1371,
+      153
+    ]
   },
   {
     "id": 16421215192,
@@ -2734,7 +3308,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 15.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 16400588488,
@@ -2751,7 +3326,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 11.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 16390047506,
@@ -2768,7 +3344,14 @@ window.STRAVA_DATA = [
     "elev_gain": 73.2,
     "avg_cadence": null,
     "suffer": 201.0,
-    "calories": 888.4
+    "calories": 888.4,
+    "z": [
+      49,
+      220,
+      1171,
+      2879,
+      268
+    ]
   },
   {
     "id": 16383743434,
@@ -2785,7 +3368,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 21.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 16363244677,
@@ -2802,7 +3386,14 @@ window.STRAVA_DATA = [
     "elev_gain": 42.4,
     "avg_cadence": null,
     "suffer": 96.0,
-    "calories": 575.8
+    "calories": 575.8,
+    "z": [
+      493,
+      257,
+      529,
+      1811,
+      0
+    ]
   },
   {
     "id": 16327639294,
@@ -2819,7 +3410,14 @@ window.STRAVA_DATA = [
     "elev_gain": 42.0,
     "avg_cadence": null,
     "suffer": 86.0,
-    "calories": 522.4
+    "calories": 522.4,
+    "z": [
+      214,
+      0,
+      1158,
+      1084,
+      10
+    ]
   },
   {
     "id": 16309379808,
@@ -2836,7 +3434,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 28.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 16295542764,
@@ -2853,7 +3452,14 @@ window.STRAVA_DATA = [
     "elev_gain": 59.0,
     "avg_cadence": null,
     "suffer": 169.0,
-    "calories": 885.2
+    "calories": 885.2,
+    "z": [
+      44,
+      341,
+      1615,
+      2140,
+      373
+    ]
   },
   {
     "id": 16268154514,
@@ -2870,7 +3476,14 @@ window.STRAVA_DATA = [
     "elev_gain": 27.8,
     "avg_cadence": null,
     "suffer": 97.0,
-    "calories": 588.3
+    "calories": 588.3,
+    "z": [
+      48,
+      119,
+      1533,
+      1240,
+      0
+    ]
   },
   {
     "id": 16247821118,
@@ -2887,7 +3500,14 @@ window.STRAVA_DATA = [
     "elev_gain": 28.6,
     "avg_cadence": null,
     "suffer": 12.0,
-    "calories": 25.0
+    "calories": 25.0,
+    "z": [
+      87,
+      160,
+      125,
+      203,
+      0
+    ]
   },
   {
     "id": 16247821157,
@@ -2904,7 +3524,14 @@ window.STRAVA_DATA = [
     "elev_gain": 43.0,
     "avg_cadence": null,
     "suffer": 99.0,
-    "calories": 615.0
+    "calories": 615.0,
+    "z": [
+      138,
+      87,
+      1682,
+      1256,
+      0
+    ]
   },
   {
     "id": 16202507488,
@@ -2921,7 +3548,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 17.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 16176532872,
@@ -2938,7 +3566,14 @@ window.STRAVA_DATA = [
     "elev_gain": 64.6,
     "avg_cadence": null,
     "suffer": 185.0,
-    "calories": 889.4
+    "calories": 889.4,
+    "z": [
+      51,
+      103,
+      1747,
+      2530,
+      208
+    ]
   },
   {
     "id": 16156440985,
@@ -2955,7 +3590,14 @@ window.STRAVA_DATA = [
     "elev_gain": 51.4,
     "avg_cadence": null,
     "suffer": 114.0,
-    "calories": 616.0
+    "calories": 616.0,
+    "z": [
+      65,
+      180,
+      1357,
+      1554,
+      0
+    ]
   },
   {
     "id": 16150948545,
@@ -2972,7 +3614,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 11.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 16128068334,
@@ -2989,7 +3632,14 @@ window.STRAVA_DATA = [
     "elev_gain": 43.8,
     "avg_cadence": null,
     "suffer": 126.0,
-    "calories": 616.0
+    "calories": 616.0,
+    "z": [
+      35,
+      48,
+      1011,
+      2091,
+      0
+    ]
   },
   {
     "id": 16088329070,
@@ -3006,7 +3656,14 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 54.0,
-    "calories": null
+    "calories": null,
+    "z": [
+      1110,
+      558,
+      950,
+      591,
+      0
+    ]
   },
   {
     "id": 16076383302,
@@ -3023,7 +3680,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 11.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 16048486355,
@@ -3040,7 +3698,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 18.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 16026306725,
@@ -3057,7 +3716,14 @@ window.STRAVA_DATA = [
     "elev_gain": 10.8,
     "avg_cadence": null,
     "suffer": 30.0,
-    "calories": 246.7
+    "calories": 246.7,
+    "z": [
+      36,
+      364,
+      4377,
+      0,
+      0
+    ]
   },
   {
     "id": 15994927106,
@@ -3074,7 +3740,14 @@ window.STRAVA_DATA = [
     "elev_gain": 36.6,
     "avg_cadence": null,
     "suffer": 122.0,
-    "calories": 533.6
+    "calories": 533.6,
+    "z": [
+      60,
+      50,
+      564,
+      1686,
+      371
+    ]
   },
   {
     "id": 15968183669,
@@ -3091,7 +3764,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 43.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 15942061697,
@@ -3108,7 +3782,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 12.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 15917453761,
@@ -3125,7 +3800,14 @@ window.STRAVA_DATA = [
     "elev_gain": 18.4,
     "avg_cadence": null,
     "suffer": 147.0,
-    "calories": 709.9
+    "calories": 709.9,
+    "z": [
+      72,
+      242,
+      1202,
+      2117,
+      134
+    ]
   },
   {
     "id": 15891258828,
@@ -3142,7 +3824,14 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 16.0,
-    "calories": null
+    "calories": null,
+    "z": [
+      2682,
+      920,
+      0,
+      0,
+      0
+    ]
   },
   {
     "id": 15872424389,
@@ -3159,7 +3848,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 16.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 15864912549,
@@ -3176,7 +3866,14 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 116.0,
-    "calories": null
+    "calories": null,
+    "z": [
+      212,
+      619,
+      431,
+      863,
+      945
+    ]
   },
   {
     "id": 15846254158,
@@ -3193,7 +3890,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 20.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 15785922648,
@@ -3210,7 +3908,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 25.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 15759711396,
@@ -3227,7 +3926,14 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 31.0,
-    "calories": null
+    "calories": null,
+    "z": [
+      1089,
+      2299,
+      215,
+      0,
+      0
+    ]
   },
   {
     "id": 15748262525,
@@ -3244,7 +3950,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 18.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 15723902950,
@@ -3261,7 +3968,14 @@ window.STRAVA_DATA = [
     "elev_gain": 39.6,
     "avg_cadence": null,
     "suffer": 107.0,
-    "calories": 661.3
+    "calories": 661.3,
+    "z": [
+      55,
+      705,
+      1693,
+      1105,
+      57
+    ]
   },
   {
     "id": 15706272506,
@@ -3278,7 +3992,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 22.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 15690350474,
@@ -3295,7 +4010,14 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 50.0,
-    "calories": null
+    "calories": null,
+    "z": [
+      558,
+      299,
+      566,
+      787,
+      0
+    ]
   },
   {
     "id": 15666478668,
@@ -3312,7 +4034,14 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 23.0,
-    "calories": null
+    "calories": null,
+    "z": [
+      1012,
+      1396,
+      322,
+      0,
+      0
+    ]
   },
   {
     "id": 15660659181,
@@ -3329,7 +4058,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 19.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 15643948158,
@@ -3346,7 +4076,14 @@ window.STRAVA_DATA = [
     "elev_gain": 45.2,
     "avg_cadence": null,
     "suffer": 142.0,
-    "calories": 617.7
+    "calories": 617.7,
+    "z": [
+      49,
+      75,
+      824,
+      1971,
+      350
+    ]
   },
   {
     "id": 15612179045,
@@ -3363,7 +4100,14 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 13.0,
-    "calories": null
+    "calories": null,
+    "z": [
+      326,
+      1481,
+      0,
+      0,
+      0
+    ]
   },
   {
     "id": 15588497021,
@@ -3380,7 +4124,14 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 88.0,
-    "calories": null
+    "calories": null,
+    "z": [
+      247,
+      711,
+      797,
+      1121,
+      113
+    ]
   },
   {
     "id": 15582805289,
@@ -3397,7 +4148,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 15.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 15565257124,
@@ -3414,7 +4166,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 13.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 15553554191,
@@ -3431,7 +4184,14 @@ window.STRAVA_DATA = [
     "elev_gain": 14.2,
     "avg_cadence": null,
     "suffer": 108.0,
-    "calories": 590.7
+    "calories": 590.7,
+    "z": [
+      169,
+      718,
+      612,
+      1568,
+      185
+    ]
   },
   {
     "id": 15543869306,
@@ -3448,7 +4208,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 18.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 15526571602,
@@ -3465,7 +4226,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 16.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 15509377146,
@@ -3482,7 +4244,14 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 110.0,
-    "calories": null
+    "calories": null,
+    "z": [
+      509,
+      605,
+      705,
+      1797,
+      87
+    ]
   },
   {
     "id": 15502719049,
@@ -3499,7 +4268,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 17.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 15474703846,
@@ -3516,7 +4286,14 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 25.0,
-    "calories": null
+    "calories": null,
+    "z": [
+      1482,
+      2104,
+      30,
+      0,
+      0
+    ]
   },
   {
     "id": 15464040253,
@@ -3533,7 +4310,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 14.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 15457747311,
@@ -3550,7 +4328,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 14.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 15398488730,
@@ -3567,7 +4346,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": null,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 15395083204,
@@ -3584,7 +4364,14 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 127.0,
-    "calories": null
+    "calories": null,
+    "z": [
+      176,
+      925,
+      730,
+      823,
+      987
+    ]
   },
   {
     "id": 15384799997,
@@ -3601,7 +4388,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 15.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 15381178881,
@@ -3618,7 +4406,14 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 28.0,
-    "calories": null
+    "calories": null,
+    "z": [
+      1039,
+      2558,
+      6,
+      0,
+      0
+    ]
   },
   {
     "id": 15366685654,
@@ -3635,7 +4430,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 12.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 15332731153,
@@ -3652,7 +4448,14 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 178.0,
-    "calories": null
+    "calories": null,
+    "z": [
+      66,
+      148,
+      1006,
+      2909,
+      75
+    ]
   },
   {
     "id": 15315851958,
@@ -3669,7 +4472,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 20.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 15306085325,
@@ -3686,7 +4490,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 22.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 15294190029,
@@ -3703,7 +4508,14 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 148.0,
-    "calories": null
+    "calories": null,
+    "z": [
+      88,
+      203,
+      822,
+      2719,
+      0
+    ]
   },
   {
     "id": 15270996168,
@@ -3720,7 +4532,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 19.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 15238465644,
@@ -3737,7 +4550,14 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 212.0,
-    "calories": null
+    "calories": null,
+    "z": [
+      83,
+      241,
+      700,
+      3566,
+      200
+    ]
   },
   {
     "id": 15228688860,
@@ -3754,7 +4574,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 14.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 15194501595,
@@ -3771,7 +4592,14 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 197.0,
-    "calories": null
+    "calories": null,
+    "z": [
+      80,
+      203,
+      315,
+      2020,
+      1187
+    ]
   },
   {
     "id": 15188759390,
@@ -3788,7 +4616,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 23.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 15162010240,
@@ -3805,7 +4634,14 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 23.0,
-    "calories": null
+    "calories": null,
+    "z": [
+      1969,
+      1636,
+      0,
+      0,
+      0
+    ]
   },
   {
     "id": 15152319828,
@@ -3822,7 +4658,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 22.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 15140998358,
@@ -3839,7 +4676,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 17.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 15135157837,
@@ -3856,7 +4694,14 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 123.0,
-    "calories": null
+    "calories": null,
+    "z": [
+      94,
+      118,
+      1701,
+      1746,
+      0
+    ]
   },
   {
     "id": 15135157627,
@@ -3873,7 +4718,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 33.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 15103376572,
@@ -3890,7 +4736,14 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 153.0,
-    "calories": null
+    "calories": null,
+    "z": [
+      78,
+      125,
+      185,
+      755,
+      1661
+    ]
   },
   {
     "id": 15065193685,
@@ -3907,7 +4760,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 15.0,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 15042350260,
@@ -3924,7 +4778,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": null,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 15018760525,
@@ -3941,7 +4796,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": null,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 15018759367,
@@ -3958,7 +4814,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": null,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 15018760526,
@@ -3975,7 +4832,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": null,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 15018760566,
@@ -3992,7 +4850,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": null,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 15018759644,
@@ -4009,7 +4868,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": null,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 15018760640,
@@ -4026,7 +4886,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": null,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 15018760735,
@@ -4043,7 +4904,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": null,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 15018759900,
@@ -4060,7 +4922,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": null,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 15018760638,
@@ -4077,7 +4940,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": null,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 15018760791,
@@ -4094,7 +4958,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": null,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 15018760785,
@@ -4111,7 +4976,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": null,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 15018760885,
@@ -4128,7 +4994,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": null,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 15018760241,
@@ -4145,7 +5012,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": null,
-    "calories": null
+    "calories": null,
+    "z": null
   },
   {
     "id": 15018760887,
@@ -4162,7 +5030,8 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": null,
-    "calories": null
+    "calories": null,
+    "z": null
   }
 ];
-window.STRAVA_SYNCED_AT = '2026-07-03T17:00:45';
+window.STRAVA_SYNCED_AT = '2026-07-03T17:23:00';
