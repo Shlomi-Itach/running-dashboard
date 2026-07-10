@@ -1,5 +1,23 @@
 window.STRAVA_DATA = [
   {
+    "id": 19252956859,
+    "name": "Morning Weight Training",
+    "type": "WeightTraining",
+    "date": "2026-07-10T09:35:30Z",
+    "distance": 0.0,
+    "moving_time": 7001,
+    "elapsed": 7001,
+    "avg_speed": 0.0,
+    "max_speed": 0.0,
+    "avg_hr": 112.0,
+    "max_hr": 158.0,
+    "elev_gain": 0,
+    "avg_cadence": null,
+    "suffer": 16.0,
+    "calories": null,
+    "z": null
+  },
+  {
     "id": 19210745444,
     "name": "Morning Weight Training",
     "type": "WeightTraining",
@@ -5100,4 +5118,4 @@ window.STRAVA_DATA = [
     "z": null
   }
 ];
-window.STRAVA_SYNCED_AT = '2026-07-09T22:55:03';
+window.STRAVA_SYNCED_AT = '2026-07-10T10:36:25';
