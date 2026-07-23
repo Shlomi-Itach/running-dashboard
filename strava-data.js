@@ -1,5 +1,29 @@
 window.STRAVA_DATA = [
   {
+    "id": 19436224384,
+    "name": "Night Run",
+    "type": "Run",
+    "date": "2026-07-23T21:17:18Z",
+    "distance": 5006.3,
+    "moving_time": 2421,
+    "elapsed": 2421,
+    "avg_speed": 2.068,
+    "max_speed": 2.52,
+    "avg_hr": 146.2,
+    "max_hr": 155.0,
+    "elev_gain": 0,
+    "avg_cadence": null,
+    "suffer": 9.0,
+    "calories": null,
+    "z": [
+      113,
+      1360,
+      948,
+      0,
+      0
+    ]
+  },
+  {
     "id": 19370890727,
     "name": "Morning Weight Training",
     "type": "WeightTraining",
@@ -5262,4 +5286,4 @@ window.STRAVA_DATA = [
     "z": null
   }
 ];
-window.STRAVA_SYNCED_AT = '2026-07-23T17:53:27';
+window.STRAVA_SYNCED_AT = '2026-07-23T18:58:22';
