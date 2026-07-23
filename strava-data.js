@@ -5262,4 +5262,4 @@ window.STRAVA_DATA = [
     "z": null
   }
 ];
-window.STRAVA_SYNCED_AT = '2026-07-23T16:19:38';
+window.STRAVA_SYNCED_AT = '2026-07-23T17:53:27';
