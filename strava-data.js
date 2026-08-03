@@ -42,42 +42,6 @@ window.STRAVA_DATA = [
     "z": null
   },
   {
-    "id": 19557181874,
-    "name": "Afternoon Workout",
-    "type": "Workout",
-    "date": "2026-08-01T17:07:18Z",
-    "distance": 0.0,
-    "moving_time": 823,
-    "elapsed": 823,
-    "avg_speed": 0.0,
-    "max_speed": 0.0,
-    "avg_hr": null,
-    "max_hr": null,
-    "elev_gain": 0,
-    "avg_cadence": null,
-    "suffer": null,
-    "calories": null,
-    "z": null
-  },
-  {
-    "id": 19555735574,
-    "name": "Afternoon Workout",
-    "type": "Workout",
-    "date": "2026-08-01T15:23:33Z",
-    "distance": 0.0,
-    "moving_time": 1982,
-    "elapsed": 1982,
-    "avg_speed": 0.0,
-    "max_speed": 0.0,
-    "avg_hr": 102.0,
-    "max_hr": 118.0,
-    "elev_gain": 0,
-    "avg_cadence": null,
-    "suffer": 3.0,
-    "calories": null,
-    "z": null
-  },
-  {
     "id": 19552258664,
     "name": "Morning Run",
     "type": "Run",
@@ -5526,4 +5490,4 @@ window.STRAVA_DATA = [
     "z": null
   }
 ];
-window.STRAVA_SYNCED_AT = '2026-08-03T05:01:57';
+window.STRAVA_SYNCED_AT = '2026-08-03T05:03:58';
