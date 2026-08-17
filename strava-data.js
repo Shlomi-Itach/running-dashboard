@@ -5634,4 +5634,4 @@ window.STRAVA_DATA = [
     "z": null
   }
 ];
-window.STRAVA_SYNCED_AT = '2026-08-17T13:58:15';
+window.STRAVA_SYNCED_AT = '2026-08-17T14:25:25';
