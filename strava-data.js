@@ -42,6 +42,24 @@ window.STRAVA_DATA = [
     "z": null
   },
   {
+    "id": 20226295586,
+    "name": "Upper body workout",
+    "type": "WeightTraining",
+    "date": "2026-09-16T06:05:00Z",
+    "distance": 0.0,
+    "moving_time": 3300,
+    "elapsed": 3300,
+    "avg_speed": 0.0,
+    "max_speed": 0,
+    "avg_hr": null,
+    "max_hr": null,
+    "elev_gain": 0,
+    "avg_cadence": null,
+    "suffer": 36.0,
+    "calories": null,
+    "z": null
+  },
+  {
     "id": 20180426777,
     "name": "Morning Run",
     "type": "Run",
@@ -6120,4 +6138,4 @@ window.STRAVA_DATA = [
     "z": null
   }
 ];
-window.STRAVA_SYNCED_AT = '2026-09-18T12:05:30';
+window.STRAVA_SYNCED_AT = '2026-09-18T12:15:13';
