@@ -1,5 +1,23 @@
 window.STRAVA_DATA = [
   {
+    "id": 20249160141,
+    "name": "Afternoon Tennis",
+    "type": "Workout",
+    "date": "2026-09-19T17:30:00Z",
+    "distance": 0.0,
+    "moving_time": 5400,
+    "elapsed": 5400,
+    "avg_speed": 0.0,
+    "max_speed": 0.0,
+    "avg_hr": 141.0,
+    "max_hr": 161.0,
+    "elev_gain": 0,
+    "avg_cadence": null,
+    "suffer": 21.0,
+    "calories": null,
+    "z": null
+  },
+  {
     "id": 20223659188,
     "name": "Morning Run",
     "type": "Run",
@@ -6138,4 +6156,4 @@ window.STRAVA_DATA = [
     "z": null
   }
 ];
-window.STRAVA_SYNCED_AT = '2026-09-20T02:19:51';
+window.STRAVA_SYNCED_AT = '2026-09-20T07:50:16';
