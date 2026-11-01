@@ -1,5 +1,47 @@
 window.STRAVA_DATA = [
   {
+    "id": 20817626572,
+    "name": "Morning Weight Training",
+    "type": "WeightTraining",
+    "date": "2026-11-01T06:13:11Z",
+    "distance": 0.0,
+    "moving_time": 2773,
+    "elapsed": 2773,
+    "avg_speed": 0.0,
+    "max_speed": 0.0,
+    "avg_hr": 111.1,
+    "max_hr": 142.0,
+    "elev_gain": 0,
+    "avg_cadence": null,
+    "suffer": 6.0,
+    "calories": null,
+    "z": null
+  },
+  {
+    "id": 20817626648,
+    "name": "Morning Run",
+    "type": "Run",
+    "date": "2026-10-31T07:05:34Z",
+    "distance": 15300.3,
+    "moving_time": 6802,
+    "elapsed": 6826,
+    "avg_speed": 2.249,
+    "max_speed": 3.213,
+    "avg_hr": 161.3,
+    "max_hr": 174.0,
+    "elev_gain": 81.8,
+    "avg_cadence": null,
+    "suffer": 64.0,
+    "calories": 1379.8,
+    "z": [
+      50,
+      173,
+      3536,
+      3067,
+      0
+    ]
+  },
+  {
     "id": 20787879306,
     "name": "Morning Weight Training",
     "type": "WeightTraining",
@@ -106,6 +148,24 @@ window.STRAVA_DATA = [
       3914,
       464
     ]
+  },
+  {
+    "id": 20817627035,
+    "name": "Morning Weight Training",
+    "type": "WeightTraining",
+    "date": "2026-10-23T08:52:39Z",
+    "distance": 0.0,
+    "moving_time": 4836,
+    "elapsed": 4836,
+    "avg_speed": 0.0,
+    "max_speed": 0.0,
+    "avg_hr": 111.0,
+    "max_hr": 146.0,
+    "elev_gain": 0,
+    "avg_cadence": null,
+    "suffer": 11.0,
+    "calories": null,
+    "z": null
   },
   {
     "id": 20683317850,
@@ -504,6 +564,24 @@ window.STRAVA_DATA = [
     "z": null
   },
   {
+    "id": 20817627865,
+    "name": "Morning Weight Training",
+    "type": "WeightTraining",
+    "date": "2026-09-29T06:06:50Z",
+    "distance": 0.0,
+    "moving_time": 3191,
+    "elapsed": 3191,
+    "avg_speed": 0.0,
+    "max_speed": 0.0,
+    "avg_hr": 109.6,
+    "max_hr": 145.0,
+    "elev_gain": 0,
+    "avg_cadence": null,
+    "suffer": 7.0,
+    "calories": null,
+    "z": null
+  },
+  {
     "id": 20359464119,
     "name": "Morning Run",
     "type": "Run",
@@ -710,6 +788,24 @@ window.STRAVA_DATA = [
     "elev_gain": 0,
     "avg_cadence": null,
     "suffer": 9.0,
+    "calories": null,
+    "z": null
+  },
+  {
+    "id": 20817628456,
+    "name": "Morning Weight Training",
+    "type": "WeightTraining",
+    "date": "2026-09-16T06:07:00Z",
+    "distance": 0.0,
+    "moving_time": 3398,
+    "elapsed": 3398,
+    "avg_speed": 0.0,
+    "max_speed": 0.0,
+    "avg_hr": 125.6,
+    "max_hr": 155.0,
+    "elev_gain": 0,
+    "avg_cadence": null,
+    "suffer": 10.0,
     "calories": null,
     "z": null
   },
@@ -1176,6 +1272,30 @@ window.STRAVA_DATA = [
     "z": null
   },
   {
+    "id": 20817630246,
+    "name": "Morning Run",
+    "type": "Run",
+    "date": "2026-08-17T07:43:17Z",
+    "distance": 6010.1,
+    "moving_time": 2541,
+    "elapsed": 2609,
+    "avg_speed": 2.365,
+    "max_speed": 3.4,
+    "avg_hr": 153.0,
+    "max_hr": 177.0,
+    "elev_gain": 40.6,
+    "avg_cadence": null,
+    "suffer": 18.0,
+    "calories": 545.2,
+    "z": [
+      159,
+      750,
+      1166,
+      527,
+      7
+    ]
+  },
+  {
     "id": 19734524491,
     "name": "Morning Run",
     "type": "Run",
@@ -1240,6 +1360,30 @@ window.STRAVA_DATA = [
     "suffer": 102.0,
     "calories": null,
     "z": null
+  },
+  {
+    "id": 20817630475,
+    "name": "Morning Run",
+    "type": "Run",
+    "date": "2026-08-08T09:50:11Z",
+    "distance": 12007.8,
+    "moving_time": 5682,
+    "elapsed": 5682,
+    "avg_speed": 2.113,
+    "max_speed": 2.7,
+    "avg_hr": 148.7,
+    "max_hr": 162.0,
+    "elev_gain": 0,
+    "avg_cadence": null,
+    "suffer": 24.0,
+    "calories": null,
+    "z": [
+      221,
+      2562,
+      2899,
+      0,
+      0
+    ]
   },
   {
     "id": 19641177558,
@@ -6810,4 +6954,4 @@ window.STRAVA_DATA = [
     "z": null
   }
 ];
-window.STRAVA_SYNCED_AT = '2026-11-01T10:40:59';
+window.STRAVA_SYNCED_AT = '2026-11-01T16:57:05';
