@@ -1,5 +1,29 @@
 window.STRAVA_DATA = [
   {
+    "id": 20891336890,
+    "name": "Morning Run",
+    "type": "Run",
+    "date": "2026-11-07T08:28:56Z",
+    "distance": 16003.6,
+    "moving_time": 7070,
+    "elapsed": 7070,
+    "avg_speed": 2.264,
+    "max_speed": 3.1,
+    "avg_hr": 159.7,
+    "max_hr": 180.0,
+    "elev_gain": 0,
+    "avg_cadence": null,
+    "suffer": 72.0,
+    "calories": null,
+    "z": [
+      227,
+      920,
+      3123,
+      2599,
+      201
+    ]
+  },
+  {
     "id": 20879224007,
     "name": "Morning Weight Training",
     "type": "WeightTraining",
@@ -7032,4 +7056,4 @@ window.STRAVA_DATA = [
     "z": null
   }
 ];
-window.STRAVA_SYNCED_AT = '2026-11-07T02:26:57';
+window.STRAVA_SYNCED_AT = '2026-11-07T09:01:05';
